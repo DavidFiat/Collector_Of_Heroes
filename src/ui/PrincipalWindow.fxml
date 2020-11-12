@@ -6,12 +6,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.PrincipalWindowController">
    <children>
       <ImageView fitHeight="303.0" fitWidth="300.0" layoutX="300.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@resources/Mobile%20-%20Marvel%20Battle%20Lines%20-%20Doctor%20Strange%20Stephen%20Vincent%20Strange.png" />
+            <Image url="@../../resources/Mobile%20-%20Marvel%20Battle%20Lines%20-%20Doctor%20Strange%20Stephen%20Vincent%20Strange.png" />
          </image>
       </ImageView>
       <Label fx:id="gameName" layoutX="14.0" prefHeight="148.0" prefWidth="234.0" text="Collector of">

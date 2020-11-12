@@ -1,9 +1,43 @@
 package ui;
 
-public class Main {
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
+public class Main extends Application{
+	private PrincipalWindowController principal;
+
+	@Override
+	public void start(Stage primaryStage) throws Exception{
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PrincipalWindow.fxml"));
+			Parent root = fxmlLoader.load();
+			principal = fxmlLoader.getController();
+			Scene scene= new Scene(root);
+			//scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.jpg")));
+			primaryStage.setTitle("Collector of heroes");
+			primaryStage.setResizable(false);
+			primaryStage.show();
+			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+
+				@Override
+				public void handle(WindowEvent arg0) {
+				}
+			});
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		launch(args);
 	}
 
 }
