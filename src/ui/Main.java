@@ -6,20 +6,39 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 public class Main extends Application{
 	private PrincipalWindowController principal;
-
+	private double xOffset = 0;
+	private double yOffset = 0;
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PrincipalWindow.fxml"));
 			Parent root = fxmlLoader.load();
+			root.setOnMousePressed(new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent event) {
+					xOffset = event.getSceneX();
+					yOffset = event.getSceneY();
+				}
+			});
+			root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent event) {
+					primaryStage.setX(event.getScreenX() - xOffset);
+					primaryStage.setY(event.getScreenY() - yOffset);
+				}
+			});
+
 			principal = fxmlLoader.getController();
 			Scene scene= new Scene(root);
-			//scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
+			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.jpg")));
 			primaryStage.setTitle("Collector of heroes");
