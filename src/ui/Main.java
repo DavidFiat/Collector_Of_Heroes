@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
+import util.SoundPlayer;
 
 public class Main extends Application{
 	private PrincipalWindowController principal;
@@ -34,17 +35,17 @@ public class Main extends Application{
 					primaryStage.setY(event.getScreenY() - yOffset);
 				}
 			});
-			principal = fxmlLoader.getController();
+			setPrincipal(fxmlLoader.getController());
 			Scene scene= new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setScene(scene);
+			SoundPlayer.play("/sounds/intro.wav");
 			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.jpg")));
 			primaryStage.setTitle("Collector of heroes");
 			primaryStage.setResizable(false);
 			primaryStage.show();
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-
 				@Override
 				public void handle(WindowEvent arg0) {
 				}
@@ -56,6 +57,14 @@ public class Main extends Application{
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public PrincipalWindowController getPrincipal() {
+		return principal;
+	}
+
+	public void setPrincipal(PrincipalWindowController principal) {
+		this.principal = principal;
 	}
 
 }

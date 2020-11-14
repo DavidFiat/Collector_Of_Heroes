@@ -6,6 +6,7 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="others"/>
 	<classpathentry kind="lib" path="C:/Users/Ferna/Downloads/Collector_Of_Heroes/src/libraries/fontawesomefx-8.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
