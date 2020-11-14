@@ -34,7 +34,6 @@ public class Main extends Application{
 					primaryStage.setY(event.getScreenY() - yOffset);
 				}
 			});
-
 			principal = fxmlLoader.getController();
 			Scene scene= new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
