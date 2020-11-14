@@ -3,10 +3,9 @@ package animation;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-/**
- * This class represents the animation of puts sprite sheets in a sequence.
- * @author Juan Camilo Vélez Olaya
- *
+/*
+ * Code based from Juan Camilo Velez Olaya
+ * github: https://github.com/juanchovelezpro
  */
 public class Animation {
 
@@ -14,37 +13,37 @@ public class Animation {
 	 * The speed of the animation
 	 */
 	private int speed;
-	
+
 	/**
 	 * The quantity of frames (Sprite Sheets)
 	 */
 	private int frames;
-	
+
 	/**
 	 * An auxiliar index
 	 */
 	private int index = 0;
-	
+
 	/**
 	 * An auxiliar index to next frames method.
 	 */
 	private int count = 0;
-	
+
 	/**
 	 * The number of columns of the image to run the animation.
 	 */
 	private int col;
-	
+
 	/**
 	 * The number of rows of the image to run the animation
 	 */
 	private int row;
-	
+
 	/**
 	 * 
 	 */
 	private int startRow;
-	
+
 	/**
 	 * 
 	 */
@@ -54,22 +53,22 @@ public class Animation {
 	 * It is the image to get the sprite sheets.
 	 */
 	private BufferedImage image;
-	
+
 	/**
 	 * It is an array of the sub images (sprites)
 	 */
 	private BufferedImage[] images;
-	
+
 	/**
 	 * It is the current sprite for the animation.
 	 */
 	private BufferedImage currentImage;
-	
+
 	/**
 	 * Variable to know if the animation has finished.
 	 */
 	private boolean alive;
-	
+
 	private boolean pause;
 
 	/**
@@ -92,11 +91,11 @@ public class Animation {
 		images = new BufferedImage[frames];
 		alive = true;
 		pause= false;
-		
+
 		fillSprites();
 
 	}
-	
+
 	/**
 	 * 
 	 * @param image
@@ -154,7 +153,7 @@ public class Animation {
 		count++;
 
 		if (count >= frames) {  // You can modify frames - 1 to another number if your image does not have sprite sheets in all the image.
-									// If your image has sprite sheets in all the image you can put only frames.
+			// If your image has sprite sheets in all the image you can put only frames.
 			alive = false;
 			count = 0;
 
@@ -199,26 +198,26 @@ public class Animation {
 	}
 
 	public void setImage(BufferedImage image) {
-		
-	this.image = image;	
-		
+
+		this.image = image;	
+
 	}
-	
+
 	public void setFrames(int frames) {
-	
-	this.frames = frames;
+
+		this.frames = frames;
 	}
-	
+
 	public void setCol(int col) {
-	
+
 		this.col = col;
-		
+
 	}
-	
+
 	public void setRow(int row) {
-		
-	this.row = row;	
-		
+
+		this.row = row;	
+
 	}
 
 	public boolean isPause() {
