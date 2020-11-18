@@ -44,7 +44,7 @@ public class Main extends Application{
 			Scene scene= new Scene(root);
 			scene.setCursor(Cursor.cursor("https://icons.iconarchive.com/icons/imil/role-playing/32/Woman-3-icon.png"));
 			scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
-			primaryStage.initStyle(StageStyle.TRANSPARENT);
+			//primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setScene(scene);
 			SoundPlayer.play("/sounds/intro.wav");
 			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("video-game.png")));
