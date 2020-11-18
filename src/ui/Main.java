@@ -3,6 +3,7 @@ package ui;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -10,9 +11,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
+import model.Game;
 import util.SoundPlayer;
 
 public class Main extends Application{
+	public static final int WIDTH= 782;
+	public static final int HEIGHT= 491;
+	private Game game;
 	private PrincipalWindowController principal;
 	private double xOffset = 0;
 	private double yOffset = 0;
@@ -37,11 +42,12 @@ public class Main extends Application{
 			});
 			setPrincipal(fxmlLoader.getController());
 			Scene scene= new Scene(root);
+			scene.setCursor(Cursor.cursor("https://icons.iconarchive.com/icons/imil/role-playing/32/Woman-3-icon.png"));
 			scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setScene(scene);
 			SoundPlayer.play("/sounds/intro.wav");
-			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.jpg")));
+			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("video-game.png")));
 			primaryStage.setTitle("Collector of heroes");
 			primaryStage.setResizable(false);
 			primaryStage.show();
@@ -67,4 +73,11 @@ public class Main extends Application{
 		this.principal = principal;
 	}
 
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
 }

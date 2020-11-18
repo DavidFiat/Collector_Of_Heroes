@@ -3,11 +3,9 @@ package model;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-
 import thread.AbstractThread;
 
 public abstract class GameObject extends AbstractThread {
-
 	private int x;
 	private int y;
 	private int speedX;
@@ -28,11 +26,9 @@ public abstract class GameObject extends AbstractThread {
 	}
 
 	public GameObject(Game game, int x, int y) {
-
 		super(game);
 		this.x = x;
 		this.y = y;
-
 	}
 
 	public int getSpeedX() {
@@ -98,9 +94,6 @@ public abstract class GameObject extends AbstractThread {
 	public abstract void action();
 
 	public Rectangle getBounds() {
-
 		return new Rectangle(getX() + getWidth() / 8, getY() + getHeight() / 8, getWidth() - getWidth() / 4, getHeight() - getHeight() / 4);
-
 	}
-
 }

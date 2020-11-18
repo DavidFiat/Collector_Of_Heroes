@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 
 public class PrincipalWindowController {
 	double x=0,y=0;
+	
     @FXML
     private Label gameName;
 
