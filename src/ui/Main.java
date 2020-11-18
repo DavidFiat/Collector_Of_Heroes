@@ -40,7 +40,7 @@ public class Main extends Application{
 			scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setScene(scene);
-			SoundPlayer.play("/music/intro.wav");
+			SoundPlayer.play("/sounds/intro.wav");
 			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.jpg")));
 			primaryStage.setTitle("Collector of heroes");
 			primaryStage.setResizable(false);

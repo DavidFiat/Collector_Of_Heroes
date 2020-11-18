@@ -85,6 +85,7 @@ public class Vertex<T> implements Comparable<Vertex<T>>{
 		this.y = y;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public int compareTo(Vertex<T> vertex) {
 		int ans = Double.compare(initialTimeStamp, vertex.initialTimeStamp);
