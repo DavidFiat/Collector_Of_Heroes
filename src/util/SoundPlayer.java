@@ -8,7 +8,7 @@ import javax.sound.sampled.Clip;
 public class SoundPlayer {
 	public static HashMap<String, Clip> sounds = new HashMap<>();
 	public static String actualSong;
-	
+
 	public static void play(String path) {
 		try {
 			Clip sound = AudioSystem.getClip();
@@ -28,7 +28,7 @@ public class SoundPlayer {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	public static void startSound(String nameSound) {
 		Clip clip = sounds.get(nameSound);
 		actualSong = nameSound;
@@ -45,7 +45,7 @@ public class SoundPlayer {
 		clip.stop();
 		clip.setMicrosecondPosition(0);
 	}
-	
+
 	public static void stopActualSong() {
 		Clip clip = sounds.get(actualSong);
 		clip.stop();
