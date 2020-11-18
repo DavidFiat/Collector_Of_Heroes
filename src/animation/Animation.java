@@ -80,7 +80,6 @@ public class Animation {
 	 * @param row The number of rows that the image has of sprites.
 	 */
 	public Animation(BufferedImage image, int frames, int speed, int col, int row) {
-
 		this.image = image;
 		startCol = 1;
 		startRow = 1;
@@ -91,9 +90,7 @@ public class Animation {
 		images = new BufferedImage[frames];
 		alive = true;
 		pause= false;
-
 		fillSprites();
-
 	}
 
 	/**
@@ -105,7 +102,6 @@ public class Animation {
 	 * @param row
 	 */
 	public Animation(BufferedImage image, int frames, int speed,int startCol, int startRow, int col, int row) {
-
 		this.image = image;
 		this.startCol = startCol;
 		this.startRow = startRow;
@@ -115,9 +111,7 @@ public class Animation {
 		this.row = row;
 		images = new BufferedImage[frames];
 		alive = true;
-
 		fillSprites();
-
 	}
 
 
@@ -126,39 +120,26 @@ public class Animation {
 	 * 
 	 */
 	public void fillSprites() {
-
 		SpriteSheet ss = new SpriteSheet(image);
-
 		int k = 0;
-
 		for (int i = startRow; i <= row; i++) {
-
 			for (int j = startCol; j <= col; j++, k++) {
-
 				images[k] = ss.grabImage(i, j, (int) image.getWidth() / col, (int) image.getHeight() / row);
-
 			}
-
 		}
-
 	}
 
 	/**
 	 * Change the current image with the next sprite. 
 	 */
 	public void nextFrame() {
-
 		currentImage = images[count];
-
 		count++;
-
 		if (count >= frames) {  // You can modify frames - 1 to another number if your image does not have sprite sheets in all the image.
 			// If your image has sprite sheets in all the image you can put only frames.
 			alive = false;
 			count = 0;
-
 		}
-
 	}
 
 	public boolean isAlive() {
@@ -173,15 +154,11 @@ public class Animation {
 	 * Uses the method next frames to simulate an animation changing frames in an execution
 	 */
 	public void runAnimation() {
-
 		index++;
 		if (index > speed) {
-
 			index = 0;
 			nextFrame();
-
 		}
-
 	}
 
 	/**
@@ -192,32 +169,23 @@ public class Animation {
 	 * @param offset Move the position in X 
 	 */
 	public void drawAnimation(Graphics g, double x, double y, int offset) {
-
 		g.drawImage(currentImage, (int) x - offset, (int) y, null);
-
 	}
 
 	public void setImage(BufferedImage image) {
-
 		this.image = image;	
-
 	}
 
 	public void setFrames(int frames) {
-
 		this.frames = frames;
 	}
 
 	public void setCol(int col) {
-
 		this.col = col;
-
 	}
 
 	public void setRow(int row) {
-
 		this.row = row;	
-
 	}
 
 	public boolean isPause() {

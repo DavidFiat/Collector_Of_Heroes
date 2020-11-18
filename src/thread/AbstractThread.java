@@ -7,9 +7,7 @@ public class AbstractThread extends Thread {
 	private Game game;
 
 	public AbstractThread(Game game) {
-
 		this.game = game;
-
 	}
 
 	public Game getGame() {
@@ -21,13 +19,10 @@ public class AbstractThread extends Thread {
 	}
 
 	public synchronized void resumeThread() {
-
 		notify();
-
 	}
 
 	public void pause() {
-
 		try {
 			synchronized (this) {
 				wait();
@@ -35,7 +30,5 @@ public class AbstractThread extends Thread {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

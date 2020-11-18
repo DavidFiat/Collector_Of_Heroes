@@ -3,7 +3,6 @@ package thread;
 import model.Game;
 
 public class MoveThread extends AbstractThread{
-
 	public MoveThread(Game game) {
 		super(game);
 		setDaemon(true);
