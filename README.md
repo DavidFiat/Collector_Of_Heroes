@@ -11,4 +11,7 @@ You can find the documentation here: <br>
 - Juan David Pelaez Valencia: [jdpv01](https://github.com/jdpv01) <br>
 - Jhoan David Fiat Restrepo:  [DavidFiat](https://github.com/DavidFiat)
 ## Installation
-1. 
+1. Please turn on sound for a better experience
+2. Have installed an IDE such like: Eclipse, VS Code, and so on.
+3. Use `git clone`https://github.com/DavidFiat/Collector_Of_Heroes
+4. Open your IDE and import project 'Collector_Of_Heroes'
