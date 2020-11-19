@@ -2,9 +2,10 @@
 # Collector of Heroes :video_game:
 ## What is it?
 ## Design and analysis
-You can find engineer's method here: <br>
-You can find the statement here: <br>
-You can find the documentation here: <br>
+You can find all the documents here: <br>
+Engineer's method:  <br>
+Statement: <br>
+ADT: [***link***](https://drive.google.com/file/d/1BMlRW3fxs6Um3GoxwfjJKJ_SSXxF32e4/view?usp=sharing) <br>
 
 ## Developers
 - Luisa Fernanda Quintero Fernandez: [FernandaRojas152](https://github.com/FernandaRojas152) <br> 
