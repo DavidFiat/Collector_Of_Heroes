@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="720.0" layoutY="452.0" mnemonicParsing="false" text="Select" />
+      <ImageView fitHeight="129.0" fitWidth="102.0" layoutX="141.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/characters/e0fecc7bff04bea3213fca2350289e03.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="120.0" fitWidth="93.0" layoutX="20.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/characters/0686109fbd53d46093b541ca37f24263_w200.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="129.0" fitWidth="144.0" layoutX="229.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/characters/290ee60051b2a272c75b6b18bb70acd6.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="152.0" fitWidth="143.0" layoutX="366.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/characters/unnamed.gif" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
