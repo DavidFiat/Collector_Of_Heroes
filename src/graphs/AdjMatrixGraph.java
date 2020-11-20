@@ -241,56 +241,6 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 	}
 	
 	@Override
-	public void prim(Vertex<T> r) {
-		for (Vertex<T> u : vertices) {
-			u.setInitialTimeStamp(INFINITE);
-			u.setColor(Vertex.WHITE);
-		}
-		r.setInitialTimeStamp(0);
-		r.setPred(null);
-		PriorityQueue<Vertex<T>> queue = new PriorityQueue<>();
-		for (Vertex<T> u : vertices) {
-			queue.add(u);
-		}
-		while (!queue.isEmpty()) {
-			Vertex<T> u = queue.poll();
-			List<Vertex<T>> adjVertices = getAdjVertices(u);
-			for (Vertex<T> v : adjVertices) {
-				if (v.getColor() == Vertex.WHITE && getEdgeWeight(u, v) < v.getInitialTimeStamp()) {
-					queue.remove(v);
-					v.setInitialTimeStamp(getEdgeWeight(u, v));
-					queue.add(v);
-					v.setPred(u);
-				}
-			}
-			u.setColor(Vertex.BLACK);
-		}
-	}
-	
-	@Override
-	public ArrayList<Edge<T>> kruskal() { 		
-		ArrayList<Edge<T>> result = new ArrayList<>(); 
-		int e = 0;
-		int i = 0; 
-		ArrayList<Edge<T>> edges = getEdges();
-		Collections.sort(edges);
-		UnionFind uf = new UnionFind(vertices.size());
-
-		while (e < vertices.size() - 1 && i < edges.size()) {
-			Edge<T> edge = edges.get(i);
-			i++;
-			int x = uf.find(getIndexOf(edge.getInitial()));
-			int y = uf.find(getIndexOf(edge.getDestination()));
-			if (x != y) {
-				result.add(edge);
-				e++;
-				uf.union(x, y);
-			}
-		}
-		return result;
-	}
-	
-	@Override
 	public void dijkstra(Vertex<T> x) {
 		setInitialVertex(x);
 		PriorityQueue<Vertex<T>> queue = new PriorityQueue<>();
@@ -321,20 +271,7 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 		}
 		x.setInitialTimeStamp(0);
 	}
-
-	@Override
-	public double[][] floydWarshall() {
-		double[][] weights = getWeightsMatrix();
-		for (int k = 0; k < vertices.size(); k++) {
-			for (int i = 0; i < vertices.size(); i++) {
-				for (int j = 0; j < vertices.size(); j++) {
-					weights[i][j] = Math.min(weights[i][j], weights[i][k] + weights[k][j]);
-				}
-			}
-		}
-		return weights;
-	}
-
+	
 	public double[][] getWeightsMatrix() {
 		double[][] weights = new double[vertices.size()][vertices.size()];
 		for (int i = 0; i < weights.length; i++) {
