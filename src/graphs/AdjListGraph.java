@@ -10,7 +10,6 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class AdjListGraph<T> implements IGraph<T> {
-
 	private boolean directed;
 	private boolean weighted;
 	private int totalVertices;
