@@ -1,8 +1,6 @@
 package graphs;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -228,74 +226,6 @@ public class AdjListGraph<T> implements IGraph<T> {
 		u.setFinalTimeStamp(timeStamp);
 		return timeStamp;
 	}
-	
-	@Override
-	public void prim(Vertex<T> s) {
-		AdjVertex<T> r = (AdjVertex<T>) s;
-		for (Vertex<T> u : vertices) {
-			u.setInitialTimeStamp(INFINITE);
-			u.setColor(Vertex.WHITE);
-		}
-		r.setInitialTimeStamp(0);
-		r.setPred(null);
-		PriorityQueue<AdjVertex<T>> queue = new PriorityQueue<>();
-		for (Vertex<T> u : vertices) {
-			queue.add((AdjVertex<T>) u);
-		}
-		while (!queue.isEmpty()) {
-			AdjVertex<T> u = queue.poll();
-			for (Edge<T> e : u.getAdjList()) {
-				AdjVertex<T> v = (AdjVertex<T>) e.getDestination();
-				if (v.getColor() == Vertex.WHITE && e.getWeight() < v.getInitialTimeStamp()) {
-					queue.remove(v);
-					v.setInitialTimeStamp(e.getWeight());
-					queue.add(v);
-					v.setPred(u);
-				}
-			}
-			u.setColor(Vertex.BLACK);
-		}
-	}
-
-	public ArrayList<Edge<T>> kruskal() {
-		
-		ArrayList<Edge<T>> result = new ArrayList<>(); // This will store the resultant MST
-		int e = 0; // An index variable, used for result[]
-		int i = 0; // An index variable, used for sorted edges
-
-		ArrayList<Edge<T>> edges = getEdges();
-
-		// Step 1: Sort all the edges in non-decreasing order of their
-		// weight. If we are not allowed to change the given graph, we
-		// can create a copy of array of edges
-		Collections.sort(edges);
-
-		UnionFind uf = new UnionFind(vertices.size());
-
-		i = 0; // Index used to pick next edge
-
-		// Number of edges to be taken is equal to V-1
-		while (e < vertices.size() - 1 && i < edges.size()) {
-			// Step 2: Pick the smallest edge. And increment
-			// the index for next iteration
-			Edge<T> edge = edges.get(i);
-			i++;
-
-			int x = uf.find(getIndexOf(edge.getInitial()));
-			int y = uf.find(getIndexOf(edge.getDestination()));
-
-			// If including this edge does't cause cycle,
-			// include it in result and increment the index
-			// of result for next edge
-			if (x != y) {
-				result.add(edge);
-				e++;
-				uf.union(x, y);
-			}
-			// Else discard the edge
-		}
-		return result;
-	}
 
 	@Override
 	public void dijkstra(Vertex<T> x) {
@@ -325,35 +255,6 @@ public class AdjListGraph<T> implements IGraph<T> {
 			u.setPred(null);
 		}
 		s.setInitialTimeStamp(0);
-	}
-
-	public double[][] floydWarshall() {
-		double[][] weights = getWeightsMatrix();
-		for (int k = 0; k < vertices.size(); k++) {
-			for (int i = 0; i < vertices.size(); i++) {
-				for (int j = 0; j < vertices.size(); j++) {
-					weights[i][j] = Math.min(weights[i][j], weights[i][k] + weights[k][j]);
-				}
-			}
-		}
-		return weights;
-	}
-	
-	private double[][] getWeightsMatrix() {
-		double[][] weights = new double[vertices.size()][vertices.size()];
-		for (int i = 0; i < weights.length; i++) {
-			Arrays.fill(weights[i], INFINITE);
-		}
-		for (int i = 0; i < vertices.size(); i++) {
-			weights[i][i] = 0;
-			AdjVertex<T> u = (AdjVertex<T>) vertices.get(i);
-			for (Edge<T> e : u.getAdjList()) {
-				AdjVertex<T> v = (AdjVertex<T>) e.getDestination();
-				double weight = e.getWeight();
-				weights[i][getIndexOf(v)] = weight;
-			}
-		}
-		return weights;
 	}
 	
 	public int getIndexOf(Vertex<T> v) {
