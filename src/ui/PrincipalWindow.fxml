@@ -43,11 +43,7 @@
                   <Insets right="4.0" top="2.0" />
                </HBox.margin>
             </FontAwesomeIcon>
-            <FontAwesomeIcon fill="#83bca9" glyphStyle="CLOSE" glyphStyleClass="" iconName="CLOSE" onMouseClicked="#close" size="2em">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </FontAwesomeIcon>
+            <FontAwesomeIcon fill="#83bca9" iconName="CLOSE" onMouseClicked="#close" size="2em" />
          </children>
       </HBox>
    </children>

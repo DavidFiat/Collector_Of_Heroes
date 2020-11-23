@@ -26,7 +26,7 @@ public class PrincipalWindowController {
 		Pane root= fxmlLoader.load();
 		Scene scene= new Scene(root);
 		Stage stage= new Stage();
-		stage.getIcons().add(new Image(Main.class.getResourceAsStream("icon.jpg")));
+		stage.getIcons().add(new Image(Main.class.getResourceAsStream("video-game.png")));
 		stage.setTitle("Heroes");
 		stage.initStyle(StageStyle.TRANSPARENT);
 		stage.setResizable(false);

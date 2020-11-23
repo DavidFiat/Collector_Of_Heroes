@@ -15,10 +15,10 @@
 
 .button {
     -fx-font-family: 'Karma Suture';
-	-fx-font-size: 20;
+    -fx-font-size: 20;
     -fx-background-color: linear-gradient(to top right, #F26419, #F6AE2D);
 }
 
-FontAwesomeIcon:hover{
-	-fx-cursor:hand;
+FontAwesomeIcon: hover{
+    -fx-cursor: hand;
 }
