@@ -1,47 +1,19 @@
 package model;
 
-import java.util.ArrayList;
-
-import thread.AbstractThread;
-import thread.MoveThread;
+import java.util.HashMap;
 
 public class Game {
-	private Player player;
-	private boolean paused;
-	private ArrayList<AbstractThread> processes;
+	private HashMap<String, Player> player;
+
 	public Game() {
-		player= new Player(this);
-		processes= new ArrayList<AbstractThread>();
-		addProcesses();
-	}
-	
-	public void addProcesses() {
-		processes.add(new MoveThread(this));
-	}
-	
-	public void startProcesses() {
-		for (int i = 0; i < processes.size(); i++) {
-			processes.get(i).start();
-		}
+		setPlayer(new HashMap<>());
 	}
 
-	public ArrayList<AbstractThread> getProcesses() {
-		return processes;
-	}
-
-	public Player getPlayer() {
+	public HashMap<String, Player> getPlayer() {
 		return player;
 	}
 
-	public void setPlayer(Player player) {
+	public void setPlayer(HashMap<String, Player> player) {
 		this.player = player;
-	}
-
-	public boolean isPaused() {
-		return paused;
-	}
-	
-	public void setPaused(boolean paused) {
-		this.paused = paused;
 	}
 }
