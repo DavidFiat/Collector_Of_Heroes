@@ -1,0 +1,40 @@
+@font-face{
+	font-family: 'Karma Suture';
+	src: url('fonts/karma-suture.ttf');
+}
+
+@font-face{
+	font-family: 'Karma Future';
+	src: url('fonts/karma-future.ttf');
+}
+
+#pane{
+	-fx-background-color: #556F7A; 
+
+}
+
+.button {
+    -fx-font-family: 'Karma Suture';
+	-fx-font-size: 20;
+    //-fx-background-color: linear-gradient(to top right, #F26419, #F6AE2D);
+}
+
+#player{
+    -fx-font-family: 'Karma Future';
+    -fx-font-size: 25;
+	-fx-background-color: #2E6171;
+}
+
+#text{
+	-fx-font-size: 15;
+}
+.label {
+    -fx-font-family: 'Karma Suture';
+    -fx-font-size: 20;
+    //-fx-background-color: white;
+    -fx-text-fill: white;
+}
+
+ImageView: hover{
+	-fx-cursor: hand;
+}
