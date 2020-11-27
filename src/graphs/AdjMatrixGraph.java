@@ -273,17 +273,17 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 		int i = 0; 
 		ArrayList<Edge<T>> edges = getEdges();
 		Collections.sort(edges);
-		UnionFind uf = new UnionFind(vertices.size());
+		DisjointSets dss = new DisjointSets(vertices.size());
 
 		while (e < vertices.size() - 1 && i < edges.size()) {
 			Edge<T> edge = edges.get(i);
 			i++;
-			int x = uf.find(getIndexOf(edge.getInitial()));
-			int y = uf.find(getIndexOf(edge.getDestination()));
+			int x = dss.find(getIndexOf(edge.getInitial()));
+			int y = dss.find(getIndexOf(edge.getDestination()));
 			if (x != y) {
 				result.add(edge);
 				e++;
-				uf.union(x, y);
+				dss.union(x, y);
 			}
 		}
 		return result;

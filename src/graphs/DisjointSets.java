@@ -5,7 +5,7 @@ package graphs;
  * @author usuario
  */
 
-public class UnionFind {
+public class DisjointSets {
 
 	private int[] parent;
 	private int[] rank;
@@ -31,7 +31,7 @@ public class UnionFind {
 	    }
 	}
 		 
-	public UnionFind(int max) {
+	public DisjointSets(int max) {
 		parent = new int[max];
 		rank = new int[max];
 	
