@@ -1,5 +1,6 @@
 package graphs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -68,10 +69,28 @@ public interface IGraph<T> {
 	public void dfs();
 	
 	/**
+	 * Implementation of the Prim algorithm to find the minimum spanning tree of a graph
+	 * @param s Starting point vertex
+	 */
+	public void prim(Vertex<T> s);
+	
+	/**
+	 * Implementation of the kruskal algorithm to find the minimum spanning tree of a graph
+	 * @return ArrayList containing all the minimum spanning tree of a graph
+	 */
+	public ArrayList<Edge<T>> kruskal();
+	
+	/**
 	 * Implementation of the Dijkstra algorithm to find the shortest path from x to all the other vertices
 	 * @param x Starting point vertex
 	 */
 	public void dijkstra(Vertex<T> x);
+	
+	/**
+	 * Implementation of the Floyd-Warshall algorithm to find the shortest Path of all pair of vertices
+	 * @return matrix of the shortest paths for each pair of vertices
+	 */
+	public double[][] floydWarshall();
 	
 	public boolean isInGraph(T value);
 	

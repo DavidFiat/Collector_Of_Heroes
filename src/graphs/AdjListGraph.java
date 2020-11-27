@@ -1,6 +1,8 @@
 package graphs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class AdjListGraph<T> implements IGraph<T> {
+
 	private boolean directed;
 	private boolean weighted;
 	private int totalVertices;
@@ -170,18 +173,18 @@ public class AdjListGraph<T> implements IGraph<T> {
 	}
 
 	@Override
-	public void bfs(Vertex<T> x) {
-		AdjVertex<T> s = (AdjVertex<T>) x;
+	public void bfs(Vertex<T> s) {
+		AdjVertex<T> x = (AdjVertex<T>) s;
 		for (Vertex<T> u : vertices) {
 			u.setColor(Vertex.WHITE);
 			u.setInitialTimeStamp(INFINITE);
 			u.setPred(null);
 		}
-		s.setColor(Vertex.GRAY);
-		s.setInitialTimeStamp(0);
-		s.setPred(null);
+		x.setColor(Vertex.GRAY);
+		x.setInitialTimeStamp(0);
+		x.setPred(null);
 		Queue<AdjVertex<T>> q = new LinkedList<>();
-		q.offer(s);
+		q.offer(x);
 		while (!q.isEmpty()) {
 			AdjVertex<T> u = q.poll();
 			for (int i = 0; i < u.getAdjList().size(); i++) {
@@ -226,6 +229,57 @@ public class AdjListGraph<T> implements IGraph<T> {
 		u.setFinalTimeStamp(timeStamp);
 		return timeStamp;
 	}
+	
+	@Override
+	public void prim(Vertex<T> s) {
+		AdjVertex<T> r = (AdjVertex<T>) s;
+		for (Vertex<T> u : vertices) {
+			u.setInitialTimeStamp(INFINITE);
+			u.setColor(Vertex.WHITE);
+		}
+		r.setInitialTimeStamp(0);
+		r.setPred(null);
+		PriorityQueue<AdjVertex<T>> queue = new PriorityQueue<>();
+		for (Vertex<T> u : vertices) {
+			queue.add((AdjVertex<T>) u);
+		}
+		while (!queue.isEmpty()) {
+			AdjVertex<T> u = queue.poll();
+			for (Edge<T> e : u.getAdjList()) {
+				AdjVertex<T> v = (AdjVertex<T>) e.getDestination();
+				if (v.getColor() == Vertex.WHITE && e.getWeight() < v.getInitialTimeStamp()) {
+					queue.remove(v);
+					v.setInitialTimeStamp(e.getWeight());
+					queue.add(v);
+					v.setPred(u);
+				}
+			}
+			u.setColor(Vertex.BLACK);
+		}
+	}
+
+	public ArrayList<Edge<T>> kruskal() {
+		ArrayList<Edge<T>> result = new ArrayList<>();
+		int e = 0; 
+		int i = 0; 
+		ArrayList<Edge<T>> edges = getEdges();
+		Collections.sort(edges);
+		UnionFind uf = new UnionFind(vertices.size());
+		
+		i = 0; 
+		while (e < vertices.size() - 1 && i < edges.size()) {
+			Edge<T> edge = edges.get(i);
+			i++;
+			int x = uf.find(getIndexOf(edge.getInitial()));
+			int y = uf.find(getIndexOf(edge.getDestination()));
+			if (x != y) {
+				result.add(edge);
+				e++;
+				uf.union(x, y);
+			}
+		}
+		return result;
+	}
 
 	@Override
 	public void dijkstra(Vertex<T> x) {
@@ -255,6 +309,35 @@ public class AdjListGraph<T> implements IGraph<T> {
 			u.setPred(null);
 		}
 		s.setInitialTimeStamp(0);
+	}
+
+	public double[][] floydWarshall() {
+		double[][] weights = getWeightsMatrix();
+		for (int k = 0; k < vertices.size(); k++) {
+			for (int i = 0; i < vertices.size(); i++) {
+				for (int j = 0; j < vertices.size(); j++) {
+					weights[i][j] = Math.min(weights[i][j], weights[i][k] + weights[k][j]);
+				}
+			}
+		}
+		return weights;
+	}
+	
+	private double[][] getWeightsMatrix() {
+		double[][] weights = new double[vertices.size()][vertices.size()];
+		for (int i = 0; i < weights.length; i++) {
+			Arrays.fill(weights[i], INFINITE);
+		}
+		for (int i = 0; i < vertices.size(); i++) {
+			weights[i][i] = 0;
+			AdjVertex<T> u = (AdjVertex<T>) vertices.get(i);
+			for (Edge<T> e : u.getAdjList()) {
+				AdjVertex<T> v = (AdjVertex<T>) e.getDestination();
+				double weight = e.getWeight();
+				weights[i][getIndexOf(v)] = weight;
+			}
+		}
+		return weights;
 	}
 	
 	public int getIndexOf(Vertex<T> v) {

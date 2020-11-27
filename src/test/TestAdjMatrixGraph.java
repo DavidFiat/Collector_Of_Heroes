@@ -2,8 +2,10 @@ package test;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import graphs.AdjMatrixGraph;
+import graphs.Edge;
 import graphs.Vertex;
 
 class TestAdjMatrixGraph {
@@ -114,6 +116,61 @@ class TestAdjMatrixGraph {
 		graph.addVertex(4);
 		graph.addEdge(1, 2, 4);
 		graph.addEdge(1, 3, 2);
+	}
+	
+	public void setUpStage13() {
+		dGraph = new AdjMatrixGraph<Integer>(true, true);
+		dGraph.addVertex(1);
+		dGraph.addVertex(2);
+		dGraph.addVertex(3);
+		dGraph.addVertex(4);
+		dGraph.addEdge(1, 3, -2);
+		dGraph.addEdge(3, 4, 2);
+		dGraph.addEdge(4, 2, -1);
+		dGraph.addEdge(2, 1, 4);
+		dGraph.addEdge(2, 3, 3);
+	}
+	
+	public void setUpStage14() {
+		graph = new AdjMatrixGraph<>(false, true);
+		graph.addVertex(1);
+		graph.addVertex(2);
+		graph.addVertex(3);
+		graph.addVertex(4);
+		graph.addVertex(5);
+		graph.addVertex(6);
+		graph.addVertex(7);
+		graph.addVertex(8);
+		graph.addVertex(9);
+		graph.addEdge(1, 2, 4);
+		graph.addEdge(1, 8, 9);
+		graph.addEdge(2, 3, 9);
+		graph.addEdge(2, 8, 11);
+		graph.addEdge(3, 9, 2);
+		graph.addEdge(4, 5, 10);
+		graph.addEdge(4, 6, 15);
+		graph.addEdge(5, 6, 11);
+		graph.addEdge(7, 8, 1);
+		graph.addEdge(7, 9, 6);
+		graph.addEdge(8, 7, 1);
+	}
+	
+	public void setUpStage15() {
+		graph = new AdjMatrixGraph<>(false, true);
+		graph.addVertex(1);
+		graph.addVertex(2);
+		graph.addVertex(3);
+		graph.addVertex(4);
+		graph.addVertex(5);
+		graph.addVertex(6);
+		graph.addEdge(1, 2, 4);
+		graph.addEdge(1, 3, 4);
+		graph.addEdge(2, 3, 2);
+		graph.addEdge(2, 4, 3);
+		graph.addEdge(2, 5, 4);
+		graph.addEdge(2, 6, 2);
+		graph.addEdge(4, 5, 3);
+		graph.addEdge(5, 6, 3);
 	}
 	
 	@Test
@@ -303,5 +360,70 @@ class TestAdjMatrixGraph {
 		setUpStage12();
 		graph.dijkstra(graph.searchVertex(1));	
 		assertTrue(graph.searchVertex(4).getInitialTimeStamp()==AdjMatrixGraph.INFINITE);
+	}
+	
+	@Test
+	public void testFloydWarshall() {
+		double[][] matrix;
+		setUpStage13();
+		matrix = dGraph.floydWarshall();
+		assertTrue(matrix[0][1] == -1);
+		assertTrue(matrix[0][2] == -2);
+		assertTrue(matrix[0][3] == 0);
+		assertTrue(matrix[1][0] == 4);
+		assertTrue(matrix[1][2] == 2);
+		assertTrue(matrix[1][3] == 4);
+		assertTrue(matrix[2][0] == 5);
+		assertTrue(matrix[2][1] == 1);
+		assertTrue(matrix[2][3] == 2);
+		assertTrue(matrix[3][0] == 3);
+		assertTrue(matrix[3][1] == -1);
+		assertTrue(matrix[3][2] == 1);
+	}
+	
+	@Test
+	public void testPrim() {
+		double totalW = 0;
+		setUpStage15();
+		graph.prim(graph.searchVertex(1));
+		totalW = 0;
+		for (int i = 0; i < graph.getVertices().size(); i++) {
+			totalW += graph.getVertices().get(i).getInitialTimeStamp();
+		}
+		assertTrue(totalW == 14);
+	}
+
+	@Test
+	public void testKruskal() {
+		double totalW = 0;
+		setUpStage15();
+		ArrayList<Edge<Integer>> edges = graph.kruskal();
+		totalW = 0;
+		Edge<Integer> e = edges.get(0);
+		assertTrue(e.getInitial() == graph.searchVertex(2));
+		assertTrue(e.getDestination() == graph.searchVertex(3));
+		assertTrue(e.getWeight() == 2);
+		totalW += e.getWeight();
+		e = edges.get(1);
+		assertTrue(e.getInitial() == graph.searchVertex(2));
+		assertTrue(e.getDestination() == graph.searchVertex(6));
+		assertTrue(e.getWeight() == 2);
+		totalW += e.getWeight();
+		e = edges.get(2);
+		assertTrue(e.getInitial() == graph.searchVertex(2));
+		assertTrue(e.getDestination() == graph.searchVertex(4));
+		assertTrue(e.getWeight() == 3);
+		totalW += e.getWeight();
+		e = edges.get(3);
+		assertTrue(e.getInitial() == graph.searchVertex(4));
+		assertTrue(e.getDestination() == graph.searchVertex(5));
+		assertTrue(e.getWeight() == 3);
+		totalW += e.getWeight();
+		e = edges.get(4);
+		assertTrue(e.getInitial() == graph.searchVertex(1));
+		assertTrue(e.getDestination() == graph.searchVertex(2));
+		assertTrue(e.getWeight() == 4);
+		totalW += e.getWeight();
+		assertTrue(totalW == 14);
 	}
 }
