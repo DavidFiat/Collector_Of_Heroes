@@ -3,7 +3,6 @@ package graphs;
 import java.util.*;
 
 public class AdjMatrixGraph<T> implements IGraph<T> {
-
 	private boolean directed;
 	private boolean weighted;
 	private int totalVertices;
