@@ -15,7 +15,7 @@ You can find all the documents here: <br>
 Engineer's method: [***link***](https://docs.google.com/document/d/1xIyF0BnejW3jaZRBmQCtNr-K3hAE3SFPUBxijHKam58/edit?usp=sharing) <br>
 Statement: [***link***](docs/ENUNCIADO.pdf) <br>
 Requirements: [***link***](docs/REQUERIMIENTOS.pdf) <br>
-Class diagram: <br>
+Class diagram: https://drive.google.com/file/d/1OmmFeyitOQ4iscMQAtVZAWqCqmMFYVh0/view?usp=sharing <br>
 ADT: [***link***](https://drive.google.com/file/d/1BMlRW3fxs6Um3GoxwfjJKJ_SSXxF32e4/view?usp=sharing) <br>
 
 ## How the game looks like
