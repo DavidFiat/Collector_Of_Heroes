@@ -52,5 +52,11 @@
          </image>
       </ImageView>
       <Label layoutX="675.0" layoutY="220.0" text="Spiderman" />
+      <ImageView fitHeight="129.0" fitWidth="144.0" layoutX="14.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/characters/a8aVQ.gif" />
+         </image>
+      </ImageView>
+      <Label layoutX="9.0" layoutY="375.0" text="Black Widow" />
    </children>
 </Pane>
