@@ -1,8 +1,8 @@
 package ui;
 
 import java.io.IOException;
-
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -15,7 +15,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 
 public class PrincipalWindowController {
-	double x=0,y=0;
+	private double xOffset = 0;
+	private double yOffset = 0;
 	
     @FXML
     private Label gameName;
@@ -24,8 +25,22 @@ public class PrincipalWindowController {
     void startGame(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("selectPlayer.fxml"));
 		Pane root= fxmlLoader.load();
-		Scene scene= new Scene(root);
 		Stage stage= new Stage();
+		root.setOnMousePressed(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				xOffset = event.getSceneX();
+				yOffset = event.getSceneY();
+			}
+		});
+		root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				stage.setX(event.getScreenX() - xOffset);
+				stage.setY(event.getScreenY() - yOffset);
+			}
+		});
+		Scene scene= new Scene(root);
 		stage.getIcons().add(new Image(Main.class.getResourceAsStream("video-game.png")));
 		stage.setTitle("Heroes");
 		stage.initStyle(StageStyle.TRANSPARENT);

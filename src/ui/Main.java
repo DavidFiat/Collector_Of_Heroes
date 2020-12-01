@@ -15,8 +15,6 @@ import model.Game;
 import util.SoundPlayer;
 
 public class Main extends Application{
-	public static final int WIDTH= 782;
-	public static final int HEIGHT= 491;
 	private Game game;
 	private PrincipalWindowController principal;
 	private double xOffset = 0;
