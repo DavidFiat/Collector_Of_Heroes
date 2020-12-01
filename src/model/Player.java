@@ -20,12 +20,12 @@ public class Player {
 		this.nickname = nickname;
 	}
 
-	public Score getScore() {
-		return score;
+	public InStack<Score> getScores() {
+		return scores;
 	}
 
-	public void setScore(Score score) {
-		this.score = score;
+	public void setScores(InStack<Score> scores) {
+		this.scores = scores;
 	}
 
 }
