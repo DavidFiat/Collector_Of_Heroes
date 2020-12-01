@@ -1,13 +1,15 @@
 package model;
 
-public class Player{
+import stack.*;
+
+public class Player {
 	private String nickname;
-	private Score score;
-	
+	private InStack<Score> scores;
+
 	public Player(String nickname, Score score) {
 		super();
 		this.nickname = nickname;
-		this.score = score;
+		scores = new IStack<Score>();
 	}
 
 	public String getNickname() {
@@ -25,6 +27,5 @@ public class Player{
 	public void setScore(Score score) {
 		this.score = score;
 	}
-	
-	
+
 }
