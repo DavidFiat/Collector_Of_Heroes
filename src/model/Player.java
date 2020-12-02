@@ -10,7 +10,6 @@ public class Player {
 	private HashMap<String, Character> characters;
 
 	public Player(String nickname, Score score) {
-		super();
 		this.nickname = nickname;
 		scores = new IStack<Score>();
 		characters= new HashMap<>();
