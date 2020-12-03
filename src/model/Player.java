@@ -2,25 +2,18 @@ package model;
 
 import java.util.HashMap;
 
+import customExceptions.AlreadyHaveCharacter;
 import stack.*;
 
 public class Player {
 	private String nickname;
 	private InStack<Score> scores;
-	private HashMap<String, Character> characters;
+	private Character[] characters;
 
-	public Player(String nickname, Score score) {
+	public Player(String nickname) {
 		this.nickname = nickname;
 		scores = new IStack<Score>();
-		characters= new HashMap<>();
-	}
-
-	public HashMap<String, Character> getCharacters() {
-		return characters;
-	}
-
-	public void setCharacters(HashMap<String, Character> characters) {
-		this.characters = characters;
+		characters = new Character[Game.NUMBER_OF_CHARACTERS];
 	}
 
 	public String getNickname() {
@@ -39,4 +32,15 @@ public class Player {
 		this.scores = scores;
 	}
 
+	public int assignCharacter(Character c) throws AlreadyHaveCharacter {
+		int i = c.getName().hashCode() % Game.NUMBER_OF_CHARACTERS;
+		Character character = characters[i];
+		if (character == null) {
+			character = c;
+			characters[i] = character;
+		} else {
+			throw new AlreadyHaveCharacter(nickname, c.getName());
+		}
+		return i;
+	}
 }

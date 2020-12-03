@@ -11,11 +11,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
-import model.Game;
 import util.SoundPlayer;
 
 public class Main extends Application{
-	private Game game;
 	private PrincipalWindowController principal;
 	private double xOffset = 0;
 	private double yOffset = 0;
@@ -71,11 +69,5 @@ public class Main extends Application{
 		this.principal = principal;
 	}
 
-	public Game getGame() {
-		return game;
-	}
 
-	public void setGame(Game game) {
-		this.game = game;
-	}
 }
