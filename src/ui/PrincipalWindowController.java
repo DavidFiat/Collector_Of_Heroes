@@ -48,7 +48,6 @@ public class PrincipalWindowController {
 		stage.setScene(scene);
 		stage.show();
     }
-    
 
     @FXML
     void min(MouseEvent event) {

@@ -8,6 +8,10 @@ public class Game {
 	public Game() {
 		setPlayer(new HashMap<>());
 	}
+	
+	public void addPlayer(String nickname) {
+		
+	}
 
 	public HashMap<String, Player> getPlayer() {
 		return player;
@@ -16,4 +20,6 @@ public class Game {
 	public void setPlayer(HashMap<String, Player> player) {
 		this.player = player;
 	}
+	
+	
 }
