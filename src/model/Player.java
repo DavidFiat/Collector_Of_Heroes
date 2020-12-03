@@ -1,19 +1,22 @@
 package model;
 
-import java.util.HashMap;
+import java.io.Serializable;
 
-import customExceptions.AlreadyHaveCharacter;
+import customExceptions.*;
+import hashTable.*;
 import stack.*;
 
-public class Player {
+public class Player implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	private String nickname;
 	private InStack<Score> scores;
-	private Character[] characters;
+	private IHashTable<String, Character> characters;
 
 	public Player(String nickname) {
 		this.nickname = nickname;
 		scores = new IStack<Score>();
-		characters = new Character[Game.NUMBER_OF_CHARACTERS];
+		characters = new HashTable<String, Character>();
 	}
 
 	public String getNickname() {
@@ -32,15 +35,19 @@ public class Player {
 		this.scores = scores;
 	}
 
-	public int assignCharacter(Character c) throws AlreadyHaveCharacter {
-		int i = c.getName().hashCode() % Game.NUMBER_OF_CHARACTERS;
-		Character character = characters[i];
-		if (character == null) {
-			character = c;
-			characters[i] = character;
-		} else {
+	public void assignCharacter(Character c) throws AlreadyHaveCharacter {
+		try {
+			characters.add(c.getName(), c);
+		} catch (RepeatedElementException e) {
 			throw new AlreadyHaveCharacter(nickname, c.getName());
 		}
-		return i;
+	}
+
+	public IHashTable<String, Character> getCharacters() {
+		return characters;
+	}
+
+	public void setCharacters(IHashTable<String, Character> characters) {
+		this.characters = characters;
 	}
 }

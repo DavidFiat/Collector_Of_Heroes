@@ -31,10 +31,7 @@ public class PrincipalWindowController {
 	private Label gameName;
 
 	@FXML
-	public void initialize(){
-		System.out.println("Hola");
-		game = new Game();
-		//saveData();
+	public void initialize() throws IOException, AlreadyHaveCharacter {
 		loadData();
 	}
 
@@ -64,7 +61,7 @@ public class PrincipalWindowController {
 		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.show();
-    }
+	}
 
 	@FXML
 	void min(MouseEvent event) {
@@ -84,15 +81,15 @@ public class PrincipalWindowController {
 		oos.close();
 	}
 
-	private void loadData(){
-		try{
+	private void loadData() throws AlreadyHaveCharacter {
+		try {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data/data.fiat_fernandez_pelaez"));
-		game = (Game) ois.readObject();
-		if (game == null) {
-			game = new Game();
-		}
-		ois.close();
-		}catch(IOException e) {
+			game = (Game) ois.readObject();
+			if (game == null) {
+				game = new Game();
+			}
+			ois.close();
+		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

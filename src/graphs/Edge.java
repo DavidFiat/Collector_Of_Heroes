@@ -1,7 +1,10 @@
 package graphs;
 
-public class Edge<T> implements Comparable<Edge<T>>{
+import java.io.Serializable;
 
+public class Edge<T> implements Comparable<Edge<T>>, Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private double weight;
 	private Vertex<T> initial;
