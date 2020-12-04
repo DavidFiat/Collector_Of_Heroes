@@ -21,6 +21,11 @@ public class SelectPlayerController{
     @FXML
     private Label text;
     
+    @FXML
+    public void initialize() {
+    	
+    }
+    
 	@FXML
     void close(MouseEvent event) {
     	Stage stage= (Stage) ((Node) event.getSource()).getScene().getWindow();

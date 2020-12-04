@@ -138,5 +138,4 @@ public class Game implements Serializable {
 	public void setThirPlace(Score thirPlace) {
 		this.thirPlace = thirPlace;
 	}
-
 }
