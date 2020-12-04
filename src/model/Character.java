@@ -3,7 +3,6 @@ package model;
 import java.io.Serializable;
 
 public class Character implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private int power;
@@ -11,11 +10,6 @@ public class Character implements Serializable {
 	public Character(String name, int power) {
 		this.name = name;
 		this.power = power;
-	}
-
-	@Override
-	public String toString() {
-		return "Character [name=" + name + ", power=" + power + "]";
 	}
 
 	public String getName() {
@@ -32,5 +26,10 @@ public class Character implements Serializable {
 
 	public void setPower(int power) {
 		this.power = power;
+	}
+	
+	@Override
+	public String toString() {
+		return "Character [name=" + name + ", power=" + power + "]";
 	}
 }
