@@ -29,5 +29,4 @@ public class Score implements Serializable {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-
 }
