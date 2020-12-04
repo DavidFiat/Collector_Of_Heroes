@@ -11,13 +11,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
-import model.Game;
 import util.SoundPlayer;
 
 public class Main extends Application{
-	public static final int WIDTH= 782;
-	public static final int HEIGHT= 491;
-	private Game game;
 	private PrincipalWindowController principal;
 	private double xOffset = 0;
 	private double yOffset = 0;
@@ -26,6 +22,7 @@ public class Main extends Application{
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PrincipalWindow.fxml"));
 			Parent root = fxmlLoader.load();
+			principal = fxmlLoader.getController();
 			root.setOnMousePressed(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent event) {
@@ -71,13 +68,5 @@ public class Main extends Application{
 
 	public void setPrincipal(PrincipalWindowController principal) {
 		this.principal = principal;
-	}
-
-	public Game getGame() {
-		return game;
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
 	}
 }

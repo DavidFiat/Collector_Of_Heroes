@@ -1,8 +1,10 @@
 package graphs;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class AdjMatrixGraph<T> implements IGraph<T> {
+public class AdjMatrixGraph<T> implements IGraph<T>, Serializable {
+	private static final long serialVersionUID = 1L;
 	private boolean directed;
 	private boolean weighted;
 	private int totalVertices;
@@ -45,23 +47,23 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 			totalVertices++;
 		}
 	}
-	
+
 	@Override
 	public boolean isInGraph(T value) {
 		return searchVertex(value) != null;
 	}
-	
+
 	@Override
 	public Vertex<T> searchVertex(T value) {
 		return hashMap.get(value);
 	}
-	
+
 	public void deleteVertex(T v) {
 		if (isInGraph(v)) {
 			deleteVertex(searchVertex(v));
 		}
 	}
-	
+
 	private void deleteVertex(Vertex<T> v) {
 		int index = getIndexOf(v);
 		for (int i = 0; i < adjMatrix.size(); i++) {
@@ -81,11 +83,11 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 		Vertex<T> destination = searchVertex(y);
 		addEdge(initial, destination);
 	}
-	
+
 	private void addEdge(Vertex<T> initial, Vertex<T> destination) {
 		addEdge(initial, destination, 1D);
 	}
-	
+
 	@Override
 	public void addEdge(T x, T y, double w) {
 		if (weighted) {
@@ -98,10 +100,12 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 	private void addEdge(Vertex<T> initial, Vertex<T> destination, double w) {
 		if (initial != null && destination != null) {
 			adjMatrix.get(getIndexOf(initial)).set(getIndexOf(destination), 1);
-			weightsMatrix.get(getIndexOf(initial)).set(getIndexOf(destination), Math.min(w, weightsMatrix.get(getIndexOf(initial)).get(getIndexOf(destination))));
+			weightsMatrix.get(getIndexOf(initial)).set(getIndexOf(destination),
+					Math.min(w, weightsMatrix.get(getIndexOf(initial)).get(getIndexOf(destination))));
 			if (!isDirected()) {
 				adjMatrix.get(getIndexOf(destination)).set(getIndexOf(initial), 1);
-				weightsMatrix.get(getIndexOf(destination)).set(getIndexOf(initial), Math.min(w, weightsMatrix.get(getIndexOf(destination)).get(getIndexOf(initial))));
+				weightsMatrix.get(getIndexOf(destination)).set(getIndexOf(initial),
+						Math.min(w, weightsMatrix.get(getIndexOf(destination)).get(getIndexOf(initial))));
 			}
 			totalEdges++;
 		}
@@ -123,7 +127,7 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 		}
 		totalEdges--;
 	}
-	
+
 	@Override
 	public boolean areAdjacent(Vertex<T> x, Vertex<T> y) {
 		return getAdjVertices(x).contains(y);
@@ -146,14 +150,14 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 		ArrayList<Edge<T>> edges = new ArrayList<>();
 		for (int i = 0; i < adjMatrix.size(); i++) {
 			for (int j = 0; j < adjMatrix.get(i).size(); j++) {
-				if(adjMatrix.get(i).get(j) == 1) {
+				if (adjMatrix.get(i).get(j) == 1) {
 					edges.add(new Edge<>(vertices.get(i), vertices.get(j), weightsMatrix.get(i).get(j)));
 				}
 			}
 		}
 		return edges;
 	}
-	
+
 	@Override
 	public double getEdgeWeight(Vertex<T> x, Vertex<T> y) {
 		double w = 0;
@@ -235,7 +239,7 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 		u.setFinalTimeStamp(timeStamp);
 		return timeStamp;
 	}
-	
+
 	@Override
 	public void prim(Vertex<T> r) {
 		for (Vertex<T> u : vertices) {
@@ -262,12 +266,12 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 			u.setColor(Vertex.BLACK);
 		}
 	}
-	
+
 	@Override
-	public ArrayList<Edge<T>> kruskal() { 		
-		ArrayList<Edge<T>> result = new ArrayList<>(); 
+	public ArrayList<Edge<T>> kruskal() {
+		ArrayList<Edge<T>> result = new ArrayList<>();
 		int e = 0;
-		int i = 0; 
+		int i = 0;
 		ArrayList<Edge<T>> edges = getEdges();
 		Collections.sort(edges);
 		DisjointSets dss = new DisjointSets(vertices.size());
@@ -285,7 +289,7 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 		}
 		return result;
 	}
-	
+
 	@Override
 	public void dijkstra(Vertex<T> x) {
 		setInitialVertex(x);
@@ -306,7 +310,7 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 			}
 		}
 	}
-	
+
 	private void setInitialVertex(Vertex<T> x) {
 		for (Vertex<T> u : vertices) {
 			u.setInitialTimeStamp(INFINITE);
@@ -337,7 +341,7 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 		}
 		return weights;
 	}
-	
+
 	public int getIndexOf(Vertex<T> v) {
 		int index = -1;
 		boolean searching = true;
@@ -353,7 +357,7 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 	public List<ArrayList<Integer>> getAdjMatrix() {
 		return adjMatrix;
 	}
-	
+
 	public List<Vertex<T>> getVertices() {
 		return vertices;
 	}

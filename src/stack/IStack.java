@@ -1,16 +1,19 @@
 package stack;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
-public class IStack<E> implements InStack<E>{
+public class IStack<E> implements InStack<E>, Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private StackNode<E> first;
 	private StackNode<E> last;
 	private int size;
 
 	public IStack() {
-		first= null;
-		last= null;
-		size=0;
+		first = null;
+		last = null;
+		size = 0;
 	}
 
 	public StackNode<E> getFirst() {
@@ -38,7 +41,7 @@ public class IStack<E> implements InStack<E>{
 	}
 
 	@Override
-	public void push(E e){
+	public void push(E e) {
 		// TODO Auto-generated method stub
 		StackNode<E> newNode = new StackNode<E>(e);
 		if (first == null) {
@@ -55,33 +58,33 @@ public class IStack<E> implements InStack<E>{
 	}
 
 	@Override
-	public E peek(){
-		E aux= null;
-		if(first==null) {
+	public E peek() {
+		E aux = null;
+		if (first == null) {
 			return null;
 		}
-		if(first.getNext()== null) {
-			aux= first.getElement();
-		}else {
-			aux= last.getElement();
+		if (first.getNext() == null) {
+			aux = first.getElement();
+		} else {
+			aux = last.getElement();
 		}
 		return aux;
 	}
 
 	@Override
-	public E pop(){
-		E aux= null;
-		if(first==null) {
+	public E pop() {
+		E aux = null;
+		if (first == null) {
 			return null;
 		}
-		if(first.getNext()==null) {
-			aux= first.getElement();
-			first=null;
+		if (first.getNext() == null) {
+			aux = first.getElement();
+			first = null;
 			size--;
-		}else {
-			aux= last.getElement();
+		} else {
+			aux = last.getElement();
 			last.getPrev().setNext(null);
-			last= last.getPrev();
+			last = last.getPrev();
 			size--;
 		}
 		return aux;
@@ -89,7 +92,7 @@ public class IStack<E> implements InStack<E>{
 
 	@Override
 	public boolean isEmpty() {
-		return first==null;
+		return first == null;
 	}
 
 	@Override

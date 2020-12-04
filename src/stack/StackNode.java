@@ -1,18 +1,22 @@
 package stack;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Fernanda
  *
  * @param <E>
  */
-public class StackNode<E> {
-	//Attributes
+public class StackNode<E> implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	// Attributes
 	private E element;
 	private StackNode<E> next;
 	private StackNode<E> prev;
-	
-	//Methods
+
+	// Methods
 	/**
 	 * 
 	 * @param element

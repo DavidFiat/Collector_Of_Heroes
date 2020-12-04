@@ -1,11 +1,14 @@
 package graphs;
 
-public class Vertex<T> implements Comparable<Vertex<T>>{
+import java.io.Serializable;
 
+public class Vertex<T> implements Comparable<Vertex<T>>, Serializable {
+
+	private static final long serialVersionUID = 1L;
 	public static final int WHITE = 0;
 	public static final int GRAY = 1;
 	public static final int BLACK = 2;
-	
+
 	private T t;
 	private double initialTimeStamp;
 	private int finalTimeStamp;
@@ -14,7 +17,7 @@ public class Vertex<T> implements Comparable<Vertex<T>>{
 	private int x;
 	private int y;
 	private Vertex<T> pred;
-	
+
 	public Vertex(T t) {
 		this.t = t;
 		pred = null;
@@ -60,15 +63,15 @@ public class Vertex<T> implements Comparable<Vertex<T>>{
 	public void setPred(Vertex<T> pred) {
 		this.pred = pred;
 	}
-	
+
 	public int getIndex() {
 		return this.index;
 	}
-	
+
 	public void setIndex(int index) {
-		this.index=index;
+		this.index = index;
 	}
-	
+
 	public int getX() {
 		return x;
 	}
@@ -89,14 +92,14 @@ public class Vertex<T> implements Comparable<Vertex<T>>{
 	@Override
 	public int compareTo(Vertex<T> vertex) {
 		int ans = Double.compare(initialTimeStamp, vertex.initialTimeStamp);
-		if(t instanceof Comparable) {
-			if(ans == 0) {
-				return ((Comparable)t).compareTo(vertex.getValue());
+		if (t instanceof Comparable) {
+			if (ans == 0) {
+				return ((Comparable) t).compareTo(vertex.getValue());
 			}
 		}
 		return ans;
 	}
-	
+
 	@Override
 	public String toString() {
 		return t.toString();

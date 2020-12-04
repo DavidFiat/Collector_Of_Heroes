@@ -10,31 +10,38 @@
 
 #pane{
 	-fx-background-color: #556F7A; 
-
 }
 
 .button {
     -fx-font-family: 'Karma Suture';
-	-fx-font-size: 20;
-    //-fx-background-color: linear-gradient(to top right, #F26419, #F6AE2D);
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to right, #5F9BFC, #87BFFF, #ADD7F6);
 }
 
 #player{
     -fx-font-family: 'Karma Future';
     -fx-font-size: 25;
-	-fx-background-color: #2E6171;
+    -fx-background-color: #2E6171;
 }
 
 #text{
 	-fx-font-size: 15;
 }
+
+#tab{
+    -fx-background-color: #2E6171;
+}
 .label {
     -fx-font-family: 'Karma Suture';
     -fx-font-size: 18;
-    //-fx-background-color: white;
     -fx-text-fill: white;
 }
 
 ImageView: hover{
 	-fx-cursor: hand;
+}
+
+FontAwesomeIcon: hover{
+    -fx-cursor: hand;
 }

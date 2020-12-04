@@ -1,13 +1,22 @@
 package model;
 
-public class Player{
-	private String nickname;
-	private Score score;
+import java.io.Serializable;
+
+import customExceptions.*;
+import hashTable.*;
+import stack.*;
+
+public class Player implements Serializable {
 	
-	public Player(String nickname, Score score) {
-		super();
+	private static final long serialVersionUID = 1L;
+	private String nickname;
+	private InStack<Score> scores;
+	private IHashTable<String, Character> characters;
+
+	public Player(String nickname) {
 		this.nickname = nickname;
-		this.score = score;
+		scores = new IStack<Score>();
+		characters = new HashTable<String, Character>();
 	}
 
 	public String getNickname() {
@@ -18,13 +27,27 @@ public class Player{
 		this.nickname = nickname;
 	}
 
-	public Score getScore() {
-		return score;
+	public InStack<Score> getScores() {
+		return scores;
 	}
 
-	public void setScore(Score score) {
-		this.score = score;
+	public void setScores(InStack<Score> scores) {
+		this.scores = scores;
 	}
-	
-	
+
+	public void assignCharacter(Character c) throws AlreadyHaveCharacter {
+		try {
+			characters.add(c.getName(), c);
+		} catch (RepeatedElementException e) {
+			throw new AlreadyHaveCharacter(nickname, c.getName());
+		}
+	}
+
+	public IHashTable<String, Character> getCharacters() {
+		return characters;
+	}
+
+	public void setCharacters(IHashTable<String, Character> characters) {
+		this.characters = characters;
+	}
 }

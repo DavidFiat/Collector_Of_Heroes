@@ -1,5 +1,6 @@
 package graphs;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,8 +10,9 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class AdjListGraph<T> implements IGraph<T> {
+public class AdjListGraph<T> implements IGraph<T>, Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private boolean directed;
 	private boolean weighted;
 	private int totalVertices;
@@ -37,21 +39,21 @@ public class AdjListGraph<T> implements IGraph<T> {
 			totalVertices++;
 		}
 	}
-	
+
 	public boolean isInGraph(T value) {
 		return searchVertex(value) != null;
 	}
-	
+
 	public AdjVertex<T> searchVertex(T value) {
 		return hashMap.get(value);
 	}
-	
+
 	public void deleteVertex(T v) {
 		if (isInGraph(v)) {
 			deleteVertex(searchVertex(v));
 		}
 	}
-	
+
 	public void deleteVertex(Vertex<T> v) {
 		for (int i = 0; i < vertices.size(); i++) {
 			deleteEdge(vertices.get(i), v);
@@ -70,7 +72,7 @@ public class AdjListGraph<T> implements IGraph<T> {
 		AdjVertex<T> destination = searchVertex(y);
 		addEdge(initial, destination);
 	}
-	
+
 	@Override
 	public void addEdge(T x, T y, double w) {
 		if (weighted) {
@@ -101,7 +103,7 @@ public class AdjListGraph<T> implements IGraph<T> {
 			deleteEdge(searchVertex(x), searchVertex(y));
 		}
 	}
-	
+
 	public void deleteEdge(Vertex<T> x, Vertex<T> y) {
 		AdjVertex<T> initial = (AdjVertex<T>) x;
 		AdjVertex<T> destination = (AdjVertex<T>) y;
@@ -122,7 +124,7 @@ public class AdjListGraph<T> implements IGraph<T> {
 	public boolean areAdjacent(Vertex<T> x, Vertex<T> y) {
 		return getAdjVertices(x).contains(y);
 	}
-	
+
 	public List<Vertex<T>> getAdjVertices(Vertex<T> x) {
 		List<Vertex<T>> adjVertices = new ArrayList<>();
 		AdjVertex<T> initial = (AdjVertex<T>) x;
@@ -132,7 +134,7 @@ public class AdjListGraph<T> implements IGraph<T> {
 		}
 		return adjVertices;
 	}
-	
+
 	public ArrayList<Edge<T>> getEdges() {
 		ArrayList<Edge<T>> edges = new ArrayList<>();
 		for (int i = 0; i < vertices.size(); i++) {
@@ -218,7 +220,7 @@ public class AdjListGraph<T> implements IGraph<T> {
 		u.setInitialTimeStamp(timeStamp);
 		u.setColor(Vertex.GRAY);
 		for (int i = 0; i < u.getAdjList().size(); i++) {
-			AdjVertex<T> v =  (AdjVertex<T>) u.getAdjList().get(i).getDestination();
+			AdjVertex<T> v = (AdjVertex<T>) u.getAdjList().get(i).getDestination();
 			if (v.getColor() == Vertex.WHITE) {
 				v.setPred(u);
 				timeStamp = dfsVisited(v, timeStamp);
@@ -229,7 +231,7 @@ public class AdjListGraph<T> implements IGraph<T> {
 		u.setFinalTimeStamp(timeStamp);
 		return timeStamp;
 	}
-	
+
 	@Override
 	public void prim(Vertex<T> s) {
 		AdjVertex<T> r = (AdjVertex<T>) s;
@@ -260,13 +262,13 @@ public class AdjListGraph<T> implements IGraph<T> {
 
 	public ArrayList<Edge<T>> kruskal() {
 		ArrayList<Edge<T>> result = new ArrayList<>();
-		int e = 0; 
-		int i = 0; 
+		int e = 0;
+		int i = 0;
 		ArrayList<Edge<T>> edges = getEdges();
 		Collections.sort(edges);
 		DisjointSets dss = new DisjointSets(vertices.size());
-		
-		i = 0; 
+
+		i = 0;
 		while (e < vertices.size() - 1 && i < edges.size()) {
 			Edge<T> edge = edges.get(i);
 			i++;
@@ -302,7 +304,7 @@ public class AdjListGraph<T> implements IGraph<T> {
 			}
 		}
 	}
-	
+
 	private void setInitialVertex(AdjVertex<T> s) {
 		for (Vertex<T> u : vertices) {
 			u.setInitialTimeStamp(INFINITE);
@@ -322,7 +324,7 @@ public class AdjListGraph<T> implements IGraph<T> {
 		}
 		return weights;
 	}
-	
+
 	private double[][] getWeightsMatrix() {
 		double[][] weights = new double[vertices.size()][vertices.size()];
 		for (int i = 0; i < weights.length; i++) {
@@ -339,7 +341,7 @@ public class AdjListGraph<T> implements IGraph<T> {
 		}
 		return weights;
 	}
-	
+
 	public int getIndexOf(Vertex<T> v) {
 		int index = -1;
 		boolean searching = true;
@@ -351,7 +353,7 @@ public class AdjListGraph<T> implements IGraph<T> {
 		}
 		return index;
 	}
-	
+
 	public List<Vertex<T>> getVertices() {
 		return vertices;
 	}
