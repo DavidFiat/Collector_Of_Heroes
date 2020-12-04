@@ -1,21 +1,19 @@
 package model;
 
 import java.io.Serializable;
-
-import customExceptions.*;
-import hashTable.*;
-import stack.*;
+import customExceptions.AlreadyHaveCharacter;
+import customExceptions.RepeatedElementException;
+import hashTable.HashTable;
+import hashTable.IHashTable;
 
 public class Player implements Serializable {
-	
 	private static final long serialVersionUID = 1L;
 	private String nickname;
-	private InStack<Score> scores;
+	private int score;
 	private IHashTable<String, Character> characters;
 
 	public Player(String nickname) {
 		this.nickname = nickname;
-		scores = new IStack<Score>();
 		characters = new HashTable<String, Character>();
 	}
 
@@ -27,13 +25,6 @@ public class Player implements Serializable {
 		this.nickname = nickname;
 	}
 
-	public InStack<Score> getScores() {
-		return scores;
-	}
-
-	public void setScores(InStack<Score> scores) {
-		this.scores = scores;
-	}
 
 	public void assignCharacter(Character c) throws AlreadyHaveCharacter {
 		try {
@@ -49,5 +40,13 @@ public class Player implements Serializable {
 
 	public void setCharacters(IHashTable<String, Character> characters) {
 		this.characters = characters;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 }

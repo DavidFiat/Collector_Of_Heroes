@@ -2,21 +2,19 @@ package model;
 
 import java.io.Serializable;
 import java.util.*;
-
 import customExceptions.AlreadyHaveCharacter;
 import graphs.*;
 
 public class Game implements Serializable {
-
 	private static final long serialVersionUID = 1L;
-	private Score firstPlace;
-	private Score secondPlace;
-	private Score thirPlace;
+	private int firstPlace;
+	private int secondPlace;
+	private int thirPlace;
 	private IGraph<Character> characters;
 	private HashMap<String, Player> players;
 	public static final int NUMBER_OF_CHARACTERS = 10;
 
-	public Game() throws AlreadyHaveCharacter {
+	public Game() throws AlreadyHaveCharacter{
 		players = new HashMap<>();
 		characters = new AdjMatrixGraph<Character>(true, true);
 //		Character one = new Character("Flash", 80);
@@ -75,13 +73,11 @@ public class Game implements Serializable {
 //		characters.addEdge(four, seven, four.getPower() - seven.getPower());
 //		characters.addEdge(seven, five, seven.getPower() - five.getPower());
 //		characters.addEdge(five, seven, five.getPower() - seven.getPower());
-
 	}
 
 	public void addPlayer(String nickname) {
 		Player p = new Player(nickname);
 		players.put(p.getNickname(), p);
-
 	}
 
 	public Player searchPlayer(String nickname) {
@@ -90,7 +86,6 @@ public class Game implements Serializable {
 
 	private List<Character> battle(Player p) {
 		return p.getCharacters().returnHash();
-
 	}
 
 	public List<Vertex<Character>> battleTimePlayerCharacters(Player p) {
@@ -115,27 +110,15 @@ public class Game implements Serializable {
 		this.players = players;
 	}
 
-	public Score getFirstPlace() {
+	public int getFirstPlace() {
 		return firstPlace;
 	}
 
-	public void setFirstPlace(Score firstPlace) {
-		this.firstPlace = firstPlace;
-	}
-
-	public Score getSecondPlace() {
+	public int getSecondPlace() {
 		return secondPlace;
 	}
 
-	public void setSecondPlace(Score secondPlace) {
-		this.secondPlace = secondPlace;
-	}
-
-	public Score getThirPlace() {
+	public int getThirPlace() {
 		return thirPlace;
-	}
-
-	public void setThirPlace(Score thirPlace) {
-		this.thirPlace = thirPlace;
 	}
 }
