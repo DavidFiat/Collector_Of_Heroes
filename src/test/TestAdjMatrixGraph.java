@@ -255,7 +255,7 @@ class TestAdjMatrixGraph {
 	}
 	
 	@Test
-	public void testRemoveEdge() {
+	public void testDeleteEdge() {
 		setUpStage10();
 		dGraph.deleteEdge(1, 2);
 		assertTrue(dGraph.getAdjVertices(dGraph.searchVertex(1)).size() == 2);

@@ -216,7 +216,7 @@ class TestAdjListGraph {
 	}
 
 	@Test
-	public void testRemoveEdge() {
+	public void testDeleteEdge() {
 		setUpStage9();
 		dGraph.deleteEdge(1, 2);
 		assertTrue(dGraph.searchVertex(1).getAdjList().size() == 2);
