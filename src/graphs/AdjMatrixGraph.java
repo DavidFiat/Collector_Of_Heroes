@@ -29,7 +29,6 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 			Vertex<T> vertex = new Vertex<T>(value);
 			hashMap.put(value, vertex);
 			vertices.add(vertex);
-
 			ArrayList<Integer> adj = new ArrayList<>();
 			ArrayList<Double> weights = new ArrayList<>();
 			for (int i = 0; i < adjMatrix.size(); i++) {
@@ -43,7 +42,6 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 			weights.set(weights.size() - 1, 0.0);
 			adjMatrix.add(adj);
 			weightsMatrix.add(weights);
-
 			totalVertices++;
 		}
 	}
@@ -173,7 +171,6 @@ public class AdjMatrixGraph<T> implements IGraph<T> {
 		int indY = getIndexOf(y);
 		if (isInGraph(x.getValue()) && isInGraph(y.getValue()) && weighted) {
 			weightsMatrix.get(indX).set(indY, w);
-
 			if (!isDirected()) {
 				weightsMatrix.get(indY).set(indX, w);
 			}
