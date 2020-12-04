@@ -29,7 +29,7 @@ public class PrincipalWindowController {
 
 	@FXML
 	private Label gameName;
-
+	
 	@FXML
 	public void initialize() throws IOException, AlreadyHaveCharacter {
 		loadData();
@@ -61,6 +61,8 @@ public class PrincipalWindowController {
 		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.show();
+		Stage stage2 = (Stage) gameName.getScene().getWindow();
+		stage2.hide();
 	}
 
 	@FXML
