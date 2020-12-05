@@ -14,21 +14,6 @@ import javafx.stage.Stage;
 import model.Character;
 
 public class GameController{
-	@FXML
-    private Label power3;
-
-    @FXML
-    private Label power2;
-
-    @FXML
-    private Label power1;
-
-    @FXML
-    private Label power4;
-
-    @FXML
-    private Label power5;
-	
     @FXML
     private ImageView card1;
     
@@ -158,22 +143,6 @@ public class GameController{
         });
     	card5.setOnMouseClicked(e -> {
     		character.setImage(image5);
-        });
-    	
-    	card1.setOnMouseEntered(e -> {
-    		power1.setText("89");
-        });
-    	card2.setOnMouseEntered(e -> {
-    		power2.setText("90");
-        });
-    	card3.setOnMouseEntered(e -> {
-    		power3.setText("65");
-        });
-    	card4.setOnMouseEntered(e -> {
-    		power4.setText("45");
-        });
-    	card5.setOnMouseEntered(e -> {
-    		power5.setText("87");
         });
     }
     
