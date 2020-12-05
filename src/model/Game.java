@@ -15,8 +15,7 @@ public class Game implements Serializable {
 	private IGraph<Character> characters;
 	private HashMap<String, Player> players;
 
-	public Game(int totalEnergy) throws AlreadyHaveCharacter {
-		this.totalEnergy = totalEnergy;
+	public Game() throws AlreadyHaveCharacter {
 		players = new HashMap<>();
 		characters = new AdjMatrixGraph<Character>(true, true);
 		Character one = new Character("Flash", 80);
@@ -113,13 +112,15 @@ public class Game implements Serializable {
 	}
 
 	public boolean battleTime(Vertex<Character> x, Vertex<Character> y) {
-		boolean done = false;
-		if (energyWasted(x, y) != Integer.MAX_VALUE) {
-			done = true;
-		}else {
-			createBattle(x, y);
-		}
-		return done;
+		return energyWasted(x, y) != Integer.MAX_VALUE;
+	}
+	
+	public boolean fight(Vertex<Character> x, Vertex<Character> y) {
+		boolean won = false;
+		int eneryWasted = energyWasted(x, y);
+		totalEnergy = totalEnergy - eneryWasted;
+		if (eneryWasted > 0) won = true;
+		return won;
 	}
 
 	public void createBattle(Vertex<Character> x, Vertex<Character> y) {
@@ -134,6 +135,7 @@ public class Game implements Serializable {
 			story += character.getName()+", ";
 		}
 		story += " in combat. " + x.getValue().getName() + " was victorious and now is ready for this new challenge.";
+		createBattle(x, y);
 		return story;
 	}
 
