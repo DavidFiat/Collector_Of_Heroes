@@ -58,7 +58,7 @@
             <Image url="@../resources/cards/DOCTOR-STRANGE-6-Keunwoo-Lee.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="405.0" layoutY="142.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="88.0" text="FIGHT" />
+      <Button layoutX="405.0" layoutY="142.0" mnemonicParsing="false" onAction="#fight" prefHeight="38.0" prefWidth="88.0" text="FIGHT" />
       <ImageView fx:id="card6" fitHeight="150.0" fitWidth="200.0" layoutX="513.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/DOCTOR-STRANGE-6.jpg" />
