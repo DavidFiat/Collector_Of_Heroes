@@ -20,7 +20,6 @@ public class SelectPlayerController{
 	private double xOffset = 0;
 	private double yOffset = 0;
 	
-	
 	@FXML
     private Pane pane;
 
@@ -32,6 +31,8 @@ public class SelectPlayerController{
 
     @FXML
     private Label text;
+    private PrincipalWindowController principal;
+	private GameController gameController;
     
     @FXML
     public void initialize() {
@@ -39,9 +40,12 @@ public class SelectPlayerController{
     }
     
     @FXML
-    void choose(ActionEvent event) throws IOException {
+    void proceed(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Game.fxml"));
 		Pane root = fxmlLoader.load();
+		gameController = fxmlLoader.getController();
+		gameController.setPrincipalWindow(principal);
+		gameController.displayCharacterImage();
 		Stage stage = new Stage();
 		root.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override
@@ -73,4 +77,8 @@ public class SelectPlayerController{
     	Stage stage= (Stage) ((Node) event.getSource()).getScene().getWindow();
     	stage.close();
     }
+
+	public void setPrincipal(PrincipalWindowController principalWindowController) {
+		principal = principalWindowController;
+	}
 }

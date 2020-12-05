@@ -25,19 +25,27 @@ public class PrincipalWindowController {
 	private double xOffset = 0;
 	private double yOffset = 0;
 	private Game game;
-
+	private SelectPlayerController selectPlayerController;
+	
 	@FXML
 	private Label gameName;
 
 	@FXML
-	public void initialize() throws IOException, AlreadyHaveCharacter {
-		loadData();
+	public void initialize() {
+		try {
+			loadData();
+		} catch (AlreadyHaveCharacter e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
 	void startGame(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("selectPlayer.fxml"));
 		Pane root = fxmlLoader.load();
+		selectPlayerController = fxmlLoader.getController();
+		selectPlayerController.setPrincipal(this);
 		Stage stage = new Stage();
 		root.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override
@@ -95,5 +103,9 @@ public class PrincipalWindowController {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public Game getGame() {
+		return game;
 	}
 }

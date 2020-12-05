@@ -1,5 +1,6 @@
 package ui;
 
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -8,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import model.Character;
 
 public class GameController{
     @FXML
@@ -45,7 +47,8 @@ public class GameController{
     
     @FXML
     private ImageView enemy;
-    
+  
+    private PrincipalWindowController principal;
     /** BIG IMAGES*/
     public Image image1 = new Image(getClass().getResource("/resources/cards/DOCTOR-STRANGE.jpg").toExternalForm());
     public Image image2 = new Image(getClass().getResource("/resources/cards/SPIDERMAN.jpg").toExternalForm());
@@ -82,7 +85,6 @@ public class GameController{
     	card8.setClip(new Circle(70,70,70));
     	card9.setClip(new Circle(70,70,70));
     	card10.setClip(new Circle(70,70,70));
-    	displayCharacterImage();
     }
     
     @FXML
@@ -96,6 +98,14 @@ public class GameController{
     }
     
     public void displayCharacterImage() {
+    	List<Character> playerCharacters = principal.getGame().getPlayers().get("DavidFiat24").getCharacters().returnHash();
+    	
+    	card1.setImage(new Image(playerCharacters.get(0).getName()));
+    	card2.setImage(new Image(playerCharacters.get(1).getName()));
+    	card3.setImage(new Image(playerCharacters.get(2).getName()));
+    	card4.setImage(new Image(playerCharacters.get(3).getName()));
+    	card5.setImage(new Image(playerCharacters.get(4).getName()));
+    	
     	card1.setOnMouseClicked(e -> {
     		character.setImage(image1);
         });
@@ -108,6 +118,10 @@ public class GameController{
     	
     }
     
+    public void setPrincipalWindow(PrincipalWindowController principal) {
+    	this.principal = principal;
+    }
+
     @FXML
     void fight(ActionEvent event) {
 
