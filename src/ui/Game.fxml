@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,22 +18,22 @@
             <Image url="@../resources/cards/DOCTOR-STRANGE-6.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="160.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card2" fitHeight="150.0" fitWidth="200.0" layoutX="160.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/AMAZING-SPIDER-MAN-7.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="291.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card3" fitHeight="150.0" fitWidth="200.0" layoutX="291.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/THOR-6.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="12.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card4" fitHeight="150.0" fitWidth="200.0" layoutX="12.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/Black-Widow-5-Keunwoo-Lee-Variant-Cover.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="212.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card5" fitHeight="150.0" fitWidth="200.0" layoutX="212.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/CAPTAIN-AMERICA-4-Maxx-Lim.jpg" />
          </image>
@@ -42,12 +43,12 @@
             <Image url="@../resources/cards/DOCTOR-STRANGE-6-Keunwoo-Lee.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="523.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card9" fitHeight="150.0" fitWidth="200.0" layoutX="523.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/Black-Widow-5-Keunwoo-Lee-Variant-Cover.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="724.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card10" fitHeight="150.0" fitWidth="200.0" layoutX="724.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/CAPTAIN-AMERICA-4-Maxx-Lim.jpg" />
          </image>
@@ -58,20 +59,21 @@
          </image>
       </ImageView>
       <Button layoutX="405.0" layoutY="142.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="88.0" text="FIGHT" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="480.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card6" fitHeight="150.0" fitWidth="200.0" layoutX="480.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/DOCTOR-STRANGE-6.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="627.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card7" fitHeight="150.0" fitWidth="200.0" layoutX="627.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/AMAZING-SPIDER-MAN-7.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="758.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card8" fitHeight="150.0" fitWidth="200.0" layoutX="758.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/THOR-6.jpg" />
          </image>
       </ImageView>
+      <FontAwesomeIcon iconName="CLOSE" layoutX="888.0" layoutY="22.0" onMouseClicked="#close" size="2em" />
    </children>
 </Pane>

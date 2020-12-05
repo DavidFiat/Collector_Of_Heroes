@@ -18,3 +18,7 @@
     -fx-text-fill: white;
     -fx-background-color: linear-gradient(to right, #5F9BFC, #87BFFF, #ADD7F6);
 }
+
+FontAwesomeIcon: hover{
+    -fx-cursor: hand;
+}
