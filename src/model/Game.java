@@ -12,15 +12,6 @@ public class Game implements Serializable {
 	private int secondPlace;
 	private int thirdPlace;
 	private int totalEnergy;
-
-	public int getTotalEnergy() {
-		return totalEnergy;
-	}
-
-	public void setTotalEnergy(int totalEnergy) {
-		this.totalEnergy = totalEnergy;
-	}
-
 	private IGraph<Character> characters;
 	private HashMap<String, Player> players;
 
@@ -123,32 +114,38 @@ public class Game implements Serializable {
 	public boolean battleTime(Vertex<Character> x, Vertex<Character> y) {
 		return energyWasted(x, y) != Integer.MAX_VALUE;
 	}
-
-	public String creatingBattle(Vertex<Character> x, Vertex<Character> y) {
-		String story = "";
-		return story;
-	}
-
-	public boolean createBattle(Vertex<Character> x, Vertex<Character> y) {
-		characters.addEdge(x.getValue(), y.getValue(), x.getValue().getPower() - y.getValue().getPower());
-		characters.addEdge(y.getValue(), x.getValue(), y.getValue().getPower() - x.getValue().getPower());
+	
+	public boolean fight(Vertex<Character> x, Vertex<Character> y) {
 		boolean won = false;
 		int eneryWasted = energyWasted(x, y);
-		if (eneryWasted > 0) {
-			won = true;
-		}
-		totalEnergy = totalEnergy - energyWasted(x, y);
+		totalEnergy = totalEnergy - eneryWasted;
+		if (eneryWasted > 0) won = true;
 		return won;
 	}
 
+	public void createBattle(Vertex<Character> x, Vertex<Character> y) {
+		characters.addEdge(x.getValue(), y.getValue(), x.getValue().getPower() - y.getValue().getPower());
+		characters.addEdge(y.getValue(), x.getValue(), y.getValue().getPower() - x.getValue().getPower());	
+	}
+	
 	public String tellStory(Vertex<Character> x, Vertex<Character> y) {
-		String story = "Before " + x.getValue().getName() + " could fight " + y.getValue().getName() + ", "
-				+ x.getValue().getName() + " had to face ";
+		String story = "Before " + x.getValue().getName() + " could fight " + y.getValue().getName() +
+				", " + x.getValue().getName() + " had to face ";
 		for (Character character : characters.getShortestPath(x, y)) {
-			story += character.getName() + ", ";
+			story += character.getName()+", ";
 		}
 		story += " in combat. " + x.getValue().getName() + " was victorious and now is ready for this new challenge.";
+		createBattle(x, y);
 		return story;
+	}
+	
+	public double getBestPossibleScore(Vertex<Character> x) {
+		characters.prim(x);
+		double bestScore = 0;
+		for (Vertex<Character> u: characters.getVertices()) {
+			bestScore += u.getInitialTimeStamp();
+		}
+		return bestScore;
 	}
 
 	public HashMap<String, Player> getPlayers() {
