@@ -20,10 +20,10 @@ public class Game implements Serializable {
 		characters = new AdjMatrixGraph<Character>(true, true);
 		Character one = new Character("Flash", 80);
 		Character two = new Character("Captain America", 35);
-		Character three = new Character("Doctor Strange", 83);
+		Character three = new Character("/resources/cards/DOCTOR-STRANGE.jpg", 83);
 		Character four = new Character("Iron Man", 58);
 		Character five = new Character("Thor", 70);
-		Character six = new Character("Spiderman", 45);
+		Character six = new Character("/resources/cards/SPIDERMAN.jpg", 45);
 		Character seven = new Character("Black Widow", 13);
 		Character eight = new Character("Thanos", 90);
 		Character nine = new Character("Scarlet Witch", 85);

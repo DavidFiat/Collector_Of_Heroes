@@ -12,7 +12,7 @@
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="782.0" stylesheets="@../resources/selectPlayer.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SelectPlayerController">
    <children>
-      <Button layoutX="666.0" layoutY="436.0" mnemonicParsing="false" onAction="#choose" text="Continue" />
+      <Button layoutX="666.0" layoutY="436.0" mnemonicParsing="false" onAction="#proceed" text="Continue" />
       <ImageView fitHeight="129.0" fitWidth="102.0" layoutX="135.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/characters/e0fecc7bff04bea3213fca2350289e03.gif" />
