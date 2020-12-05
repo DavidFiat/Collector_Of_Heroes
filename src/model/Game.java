@@ -127,16 +127,12 @@ public class Game implements Serializable {
 
 			totalEnergy = totalEnergy - energyWasted(x, y);
 		}
-
 		return won;
-
 	}
 
 	public String creatingBattle(Vertex<Character> x, Vertex<Character> y) {
 		String story = "";
-
 		return story;
-
 	}
 
 	public HashMap<String, Player> getPlayers() {
