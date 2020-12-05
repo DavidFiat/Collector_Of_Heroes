@@ -130,20 +130,19 @@ public class GameController{
     	card5.setOnMouseClicked(e -> {
     		character.setImage(image5);
         });
+    	card1.setOnMouseEntered(e -> {
     	
-    	card1.setOnMouseDragOver(e -> {
-    		
         });
-    	card2.setOnMouseClicked(e -> {
+    	card2.setOnMouseEntered(e -> {
     		character.setImage(image2);
         });
-    	card3.setOnMouseClicked(e -> {
+    	card3.setOnMouseEntered(e -> {
     		character.setImage(image3);
         });
-    	card4.setOnMouseClicked(e -> {
+    	card4.setOnMouseEntered(e -> {
     		character.setImage(image4);
         });
-    	card5.setOnMouseClicked(e -> {
+    	card5.setOnMouseEntered(e -> {
     		character.setImage(image5);
         });
     }
