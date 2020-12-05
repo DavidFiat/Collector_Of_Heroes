@@ -320,6 +320,7 @@ public class AdjMatrixGraph<T> implements IGraph<T>, Serializable {
 			vertexValues.add(endingVertex.getValue());
 			endingVertex = endingVertex.getPred();
 		}
+		Collections.reverse(vertexValues);
 		return vertexValues;
 	}
 
