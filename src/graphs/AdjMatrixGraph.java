@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class AdjMatrixGraph<T> implements IGraph<T>, Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	private boolean directed;
 	private boolean weighted;
@@ -311,6 +312,14 @@ public class AdjMatrixGraph<T> implements IGraph<T>, Serializable {
 		}
 	}
 	
+	private void setInitialVertex(Vertex<T> x) {
+		for (Vertex<T> u : vertices) {
+			u.setInitialTimeStamp(INFINITE);
+			u.setPred(null);
+		}
+		x.setInitialTimeStamp(0);
+	}
+	
 	public List<T> getShortestPathList(Vertex<T> x, Vertex<T> y) {
 		List<T> vertexValues = new ArrayList<>();
 		dijkstra(x);
@@ -320,14 +329,6 @@ public class AdjMatrixGraph<T> implements IGraph<T>, Serializable {
 		}
 		Collections.reverse(vertexValues);
 		return vertexValues;
-	}
-
-	private void setInitialVertex(Vertex<T> x) {
-		for (Vertex<T> u : vertices) {
-			u.setInitialTimeStamp(INFINITE);
-			u.setPred(null);
-		}
-		x.setInitialTimeStamp(0);
 	}
 
 	@Override
@@ -368,23 +369,28 @@ public class AdjMatrixGraph<T> implements IGraph<T>, Serializable {
 	public List<ArrayList<Integer>> getAdjMatrix() {
 		return adjMatrix;
 	}
-
+	
+	@Override
 	public List<Vertex<T>> getVertices() {
 		return vertices;
 	}
 
+	@Override
 	public int getTotalVertices() {
 		return totalVertices;
 	}
 
+	@Override
 	public int getTotalEdges() {
 		return totalEdges;
 	}
 
+	@Override
 	public boolean isDirected() {
 		return directed;
 	}
 
+	@Override
 	public boolean isWeighted() {
 		return weighted;
 	}

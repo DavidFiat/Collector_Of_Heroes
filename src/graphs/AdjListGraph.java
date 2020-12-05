@@ -305,6 +305,14 @@ public class AdjListGraph<T> implements IGraph<T>, Serializable {
 		}
 	}
 	
+	private void setInitialVertex(AdjVertex<T> s) {
+		for (Vertex<T> u : vertices) {
+			u.setInitialTimeStamp(INFINITE);
+			u.setPred(null);
+		}
+		s.setInitialTimeStamp(0);
+	}
+	
 	public List<T> getShortestPathList(Vertex<T> x, Vertex<T> y) {
 		List<T> vertexValues = new ArrayList<>();
 		dijkstra(x);
@@ -315,15 +323,7 @@ public class AdjListGraph<T> implements IGraph<T>, Serializable {
 		Collections.reverse(vertexValues);
 		return vertexValues;
 	}
-
-	private void setInitialVertex(AdjVertex<T> s) {
-		for (Vertex<T> u : vertices) {
-			u.setInitialTimeStamp(INFINITE);
-			u.setPred(null);
-		}
-		s.setInitialTimeStamp(0);
-	}
-
+	
 	public double[][] floydWarshall() {
 		double[][] weights = getWeightsMatrix();
 		for (int k = 0; k < vertices.size(); k++) {
@@ -336,7 +336,7 @@ public class AdjListGraph<T> implements IGraph<T>, Serializable {
 		return weights;
 	}
 
-	private double[][] getWeightsMatrix() {
+	public double[][] getWeightsMatrix() {
 		double[][] weights = new double[vertices.size()][vertices.size()];
 		for (int i = 0; i < weights.length; i++) {
 			Arrays.fill(weights[i], INFINITE);
@@ -365,22 +365,27 @@ public class AdjListGraph<T> implements IGraph<T>, Serializable {
 		return index;
 	}
 
+	@Override
 	public List<Vertex<T>> getVertices() {
 		return vertices;
 	}
 
+	@Override
 	public int getTotalVertices() {
 		return totalVertices;
 	}
 
+	@Override
 	public int getTotalEdges() {
 		return totalEdges;
 	}
 
+	@Override
 	public boolean isDirected() {
 		return directed;
 	}
 
+	@Override
 	public boolean isWeighted() {
 		return weighted;
 	}
