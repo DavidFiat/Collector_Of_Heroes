@@ -98,10 +98,6 @@ public class GameController{
     	stage.close();
     }
     
-    public void defeatCharacter() {
-    	
-    }
-    
     public void displayCharacterImage() {
     	List<Character> playerCharacters = principal.getGame().getPlayers().get("DavidFiat24").getCharacters().returnHash();
     	image1 = new Image(getClass().getResource(playerCharacters.get(0).getName()).toExternalForm());
@@ -154,5 +150,9 @@ public class GameController{
     @FXML
     void fight(ActionEvent event) {
 
+    }
+    
+    public void defeatCharacter() {
+    	
     }
 }

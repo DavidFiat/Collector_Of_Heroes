@@ -31,9 +31,9 @@ public class PrincipalWindowController {
 	private Label gameName;
 
 	@FXML
-	public void initialize() {
+	public void initialize() throws FileNotFoundException, IOException {
 		try {
-			game = new Game();
+			loadData();
 		} catch (AlreadyHaveCharacter e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -90,21 +90,17 @@ public class PrincipalWindowController {
 		oos.close();
 	}
 
-//	private void loadData() throws AlreadyHaveCharacter {
-//		try {
-//			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data/data.fiat_fernandez_pelaez"));
-//			game = (Game) ois.readObject();
-//			System.out.println(game+" sds");
-//			if (game == null) {
-//				game = new Game();
-//			}
-//			ois.close();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	private void loadData() throws AlreadyHaveCharacter {
+		try {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data/data.fiat_fernandez_pelaez"));
+			game = (Game) ois.readObject();
+			ois.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public Game getGame() {
 		return game;

@@ -16,6 +16,7 @@ public class Game implements Serializable {
 	private HashMap<String, Player> players;
 
 	public Game() throws AlreadyHaveCharacter {
+		System.out.println("Wqeqwe");
 		players = new HashMap<>();
 		characters = new AdjMatrixGraph<Character>(true, true);
 		Character one = new Character("/resources/cards/flash2.jpg", 80);
