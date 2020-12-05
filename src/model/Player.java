@@ -25,9 +25,8 @@ public class Player implements Serializable {
 		this.nickname = nickname;
 	}
 
-
 	public void assignCharacter(Character c) throws AlreadyHaveCharacter {
-		try {
+		try{
 			characters.add(c.getName(), c);
 		} catch (RepeatedElementException e) {
 			throw new AlreadyHaveCharacter(nickname, c.getName());
