@@ -24,7 +24,7 @@
             <Image url="@../resources/cards/AMAZING-SPIDER-MAN-7.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="card3" fitHeight="150.0" fitWidth="200.0" layoutX="287.0" layoutY="317.0" onMouseEntered="#showPower" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card3" fitHeight="150.0" fitWidth="200.0" layoutX="287.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/THOR-6.jpg" />
          </image>
@@ -77,5 +77,9 @@
       </ImageView>
       <FontAwesomeIcon fill="#a32fb5" iconName="CLOSE" layoutX="915.0" layoutY="22.0" onMouseClicked="#close" size="2em" />
       <Label fx:id="power" layoutX="340.0" layoutY="472.0" text="Label" />
+      <Label fx:id="power1" layoutX="183.0" layoutY="472.0" text="Label" />
+      <Label fx:id="power2" layoutX="53.0" layoutY="472.0" text="Label" />
+      <Label fx:id="power3" layoutX="64.0" layoutY="629.0" text="Label" />
+      <Label fx:id="power4" layoutX="240.0" layoutY="629.0" text="Label" />
    </children>
 </Pane>
