@@ -10,69 +10,77 @@ public class Game implements Serializable {
 	private int firstPlace;
 	private int secondPlace;
 	private int thirPlace;
+	private int totalEnergy;
 	private IGraph<Character> characters;
 	private HashMap<String, Player> players;
 	public static final int NUMBER_OF_CHARACTERS = 10;
 
-	public Game() throws AlreadyHaveCharacter{
+	public Game(int totalEnergy) throws AlreadyHaveCharacter {
+		this.totalEnergy = totalEnergy;
 		players = new HashMap<>();
 		characters = new AdjMatrixGraph<Character>(true, true);
-//		Character one = new Character("Flash", 80);
-//		Character two = new Character("Captain America", 35);
-//		Character three = new Character("Doctor Strange", 83);
-//		Character four = new Character("Iron Man", 58);
-//		Character five = new Character("Thor", 70);
-//		Character six = new Character("Spiderman", 45);
-//		Character seven = new Character("Black Widow", 13);
-//		Character eight = new Character("Thanos", 90);
-//		Character nine = new Character("Scarlet Witch", 85);
-//		Character ten = new Character("Hulk", 79);
-//		Player p = new Player("DavidFiat24");
-//		players.put(p.getNickname(), p);
-//		p.assignCharacter(one);
-//		p.assignCharacter(two);
-//		p.assignCharacter(three);
-//		p.assignCharacter(four);
-//		p.assignCharacter(five);
-//		p.assignCharacter(six);
-//		p.assignCharacter(seven);
-//		p.assignCharacter(eight);
-//		p.assignCharacter(nine);
-//		p.assignCharacter(ten);
-//		characters.addVertex(one);
-//		characters.addVertex(two);
-//		characters.addVertex(three);
-//		characters.addVertex(four);
-//		characters.addVertex(five);
-//		characters.addVertex(six);
-//		characters.addVertex(seven);
-//		characters.addVertex(eight);
-//		characters.addVertex(nine);
-//		characters.addVertex(ten);
-//		characters.addEdge(one, two, one.getPower() - two.getPower());
-//		characters.addEdge(two, one, two.getPower() - one.getPower());
-//		characters.addEdge(one, three, one.getPower() - three.getPower());
-//		characters.addEdge(three, one, three.getPower() - one.getPower());
-//		characters.addEdge(one, four, one.getPower() - four.getPower());
-//		characters.addEdge(four, one, four.getPower() - one.getPower());
-//		characters.addEdge(one, five, one.getPower() - five.getPower());
-//		characters.addEdge(five, one, five.getPower() - one.getPower());
-//		characters.addEdge(two, two, two.getPower() - two.getPower());
-//		characters.addEdge(two, two, two.getPower() - two.getPower());
-//		characters.addEdge(two, three, two.getPower() - three.getPower());
-//		characters.addEdge(three, two, three.getPower() - two.getPower());
-//		characters.addEdge(two, four, two.getPower() - four.getPower());
-//		characters.addEdge(four, two, four.getPower() - two.getPower());
-//		characters.addEdge(two, five, two.getPower() - five.getPower());
-//		characters.addEdge(five, two, five.getPower() - two.getPower());
-//		characters.addEdge(seven, two, seven.getPower() - two.getPower());
-//		characters.addEdge(two, seven, two.getPower() - seven.getPower());
-//		characters.addEdge(seven, three, seven.getPower() - three.getPower());
-//		characters.addEdge(three, seven, three.getPower() - seven.getPower());
-//		characters.addEdge(seven, four, seven.getPower() - four.getPower());
-//		characters.addEdge(four, seven, four.getPower() - seven.getPower());
-//		characters.addEdge(seven, five, seven.getPower() - five.getPower());
-//		characters.addEdge(five, seven, five.getPower() - seven.getPower());
+		Character one = new Character("Flash", 80);
+		Character two = new Character("Captain America", 35);
+		Character three = new Character("Doctor Strange", 83);
+		Character four = new Character("Iron Man", 58);
+		Character five = new Character("Thor", 70);
+		Character six = new Character("Spiderman", 45);
+		Character seven = new Character("Black Widow", 13);
+		Character eight = new Character("Thanos", 90);
+		Character nine = new Character("Scarlet Witch", 85);
+		Character ten = new Character("Hulk", 79);
+		Player p = new Player("DavidFiat24");
+		players.put(p.getNickname(), p);
+		p.assignCharacter(one);
+		p.assignCharacter(two);
+		p.assignCharacter(three);
+		p.assignCharacter(four);
+		p.assignCharacter(five);
+		p.assignCharacter(six);
+		p.assignCharacter(seven);
+		p.assignCharacter(eight);
+		p.assignCharacter(nine);
+		p.assignCharacter(ten);
+		characters.addVertex(one);
+		characters.addVertex(two);
+		characters.addVertex(three);
+		characters.addVertex(four);
+		characters.addVertex(five);
+		characters.addVertex(six);
+		characters.addVertex(seven);
+		characters.addVertex(eight);
+		characters.addVertex(nine);
+		characters.addVertex(ten);
+		characters.addEdge(one, two, one.getPower() - two.getPower());
+		characters.addEdge(two, one, two.getPower() - one.getPower());
+
+		characters.addEdge(two, three, two.getPower() - three.getPower());
+		characters.addEdge(three, two, three.getPower() - two.getPower());
+
+		characters.addEdge(four, three, four.getPower() - three.getPower());
+		characters.addEdge(three, four, three.getPower() - four.getPower());
+
+		characters.addEdge(four, five, four.getPower() - five.getPower());
+		characters.addEdge(five, four, five.getPower() - four.getPower());
+
+		characters.addEdge(five, six, five.getPower() - six.getPower());
+		characters.addEdge(six, five, six.getPower() - five.getPower());
+
+		characters.addEdge(six, seven, six.getPower() - seven.getPower());
+		characters.addEdge(seven, six, seven.getPower() - six.getPower());
+
+		characters.addEdge(seven, eight, seven.getPower() - eight.getPower());
+		characters.addEdge(eight, seven, eight.getPower() - seven.getPower());
+
+		characters.addEdge(eight, nine, eight.getPower() - nine.getPower());
+		characters.addEdge(nine, eight, nine.getPower() - eight.getPower());
+
+		characters.addEdge(nine, ten, nine.getPower() - ten.getPower());
+		characters.addEdge(ten, nine, ten.getPower() - nine.getPower());
+
+		characters.addEdge(ten, one, ten.getPower() - one.getPower());
+		characters.addEdge(one, ten, one.getPower() - ten.getPower());
+
 	}
 
 	public void addPlayer(String nickname) {
@@ -84,13 +92,13 @@ public class Game implements Serializable {
 		return players.get(nickname);
 	}
 
-	private List<Character> battle(Player p) {
+	private List<Character> getPlayerCharacters(Player p) {
 		return p.getCharacters().returnHash();
 	}
 
-	public List<Vertex<Character>> battleTimePlayerCharacters(Player p) {
+	public List<Vertex<Character>> getPlayerCharactersVertex(Player p) {
 		List<Vertex<Character>> c = new ArrayList<Vertex<Character>>(10);
-		List<Character> l = battle(p);
+		List<Character> l = getPlayerCharacters(p);
 		for (int i = 0; i < l.size(); i++) {
 			c.add(characters.searchVertex(l.get(i)));
 		}
@@ -98,8 +106,34 @@ public class Game implements Serializable {
 
 	}
 
-	public List<Vertex<Character>> enemyCharacters() {
+	public List<Vertex<Character>> getEnemyCharactersVetex() {
 		return characters.getVertices();
+	}
+
+	public int energyWasted(Vertex<Character> x, Vertex<Character> y) {
+		return (int) characters.getEdgeWeight(x, y);
+	}
+
+	public boolean battleTime(Vertex<Character> x, Vertex<Character> y) {
+		boolean won = false;
+		if (energyWasted(x, y) != Integer.MAX_VALUE) {
+			int eneryWasted = energyWasted(x, y);
+			if (eneryWasted > 0) {
+				won = true;
+			}
+
+			totalEnergy = totalEnergy - energyWasted(x, y);
+		}
+
+		return won;
+
+	}
+
+	public String creatingBattle(Vertex<Character> x, Vertex<Character> y) {
+		String story = "";
+
+		return story;
+
 	}
 
 	public HashMap<String, Player> getPlayers() {
