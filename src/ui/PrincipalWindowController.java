@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
 import customExceptions.AlreadyHaveCharacter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

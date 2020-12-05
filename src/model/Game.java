@@ -138,6 +138,15 @@ public class Game implements Serializable {
 		createBattle(x, y);
 		return story;
 	}
+	
+	public double getBestPossibleScore(Vertex<Character> x) {
+		characters.prim(x);
+		double bestScore = 0;
+		for (Vertex<Character> u: characters.getVertices()) {
+			bestScore += u.getInitialTimeStamp();
+		}
+		return bestScore;
+	}
 
 	public HashMap<String, Player> getPlayers() {
 		return players;
