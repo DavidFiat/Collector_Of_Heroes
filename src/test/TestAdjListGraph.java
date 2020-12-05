@@ -321,8 +321,8 @@ class TestAdjListGraph {
 	@Test
 	public void testDijkstra() {
 		setUpStage11();
-		graph.dijkstra(graph.searchVertex(1));
-		assertTrue(graph.searchVertex(4).getInitialTimeStamp() == AdjListGraph.INFINITE);
+		graph.dijkstra(graph.searchVertex(2));
+		assertTrue(graph.searchVertex(3).getInitialTimeStamp() == 6);
 	}
 	
 	@Test

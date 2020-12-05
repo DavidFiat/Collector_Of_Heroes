@@ -304,6 +304,18 @@ public class AdjListGraph<T> implements IGraph<T>, Serializable {
 			}
 		}
 	}
+	
+	public List<T> getShortestPathList(T x, T y) {
+		Vertex<T> startingVertex = searchVertex(x);
+		Vertex<T> endingVertex = searchVertex(y);
+		List<T> vertexValues = new ArrayList<>();
+		dijkstra(startingVertex);
+		while(endingVertex.getPred()!=null) {
+			vertexValues.add(endingVertex.getValue());
+			endingVertex = endingVertex.getPred();
+		}
+		return vertexValues;
+	}
 
 	private void setInitialVertex(AdjVertex<T> s) {
 		for (Vertex<T> u : vertices) {
