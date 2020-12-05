@@ -62,7 +62,7 @@ public class PrincipalWindowController {
 		stage.setScene(scene);
 		stage.show();
 		Stage stage2 = (Stage) gameName.getScene().getWindow();
-		stage2.hide();
+		stage2.close();
 	}
 
 	@FXML

@@ -358,8 +358,8 @@ class TestAdjMatrixGraph {
 	@Test
 	public void testDijkstra() {
 		setUpStage12();
-		graph.dijkstra(graph.searchVertex(1));	
-		assertTrue(graph.searchVertex(4).getInitialTimeStamp()==AdjMatrixGraph.INFINITE);
+		graph.dijkstra(graph.searchVertex(2));	
+		assertTrue(graph.searchVertex(3).getInitialTimeStamp()==6);
 	}
 	
 	@Test
