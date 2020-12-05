@@ -153,6 +153,7 @@ public class GameController{
         });
     }
     
+    
     public void displayEnemyImage() {
     	List<Character> enemyCharacters = principal.getGame().getEnemyCharactersVertex();
     	image6 = new Image(getClass().getResource(enemyCharacters.get(new Random().nextInt(enemyCharacters.size())).getName()).toExternalForm());
