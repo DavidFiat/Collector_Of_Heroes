@@ -15,8 +15,8 @@
 .button {
     -fx-font-family: 'Karma Suture';
     -fx-font-size: 20;
-    -fx-text-fill: white;
-    -fx-background-color: linear-gradient(to right, #5F9BFC, #87BFFF, #ADD7F6);
+    -fx-text-fill: black;
+    -fx-background-color: linear-gradient(to right, #B18FCF, #D8D8F6);
 }
 
 FontAwesomeIcon: hover{
