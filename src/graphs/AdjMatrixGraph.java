@@ -320,7 +320,8 @@ public class AdjMatrixGraph<T> implements IGraph<T>, Serializable {
 		x.setInitialTimeStamp(0);
 	}
 	
-	public List<T> getShortestPathList(Vertex<T> x, Vertex<T> y) {
+	@Override
+	public List<T> getShortestPath(Vertex<T> x, Vertex<T> y) {
 		List<T> vertexValues = new ArrayList<>();
 		dijkstra(x);
 		while(y.getPred()!=null) {

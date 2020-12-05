@@ -92,6 +92,8 @@ public interface IGraph<T> {
 	 */
 	public double[][] floydWarshall();
 	
+	public List<T> getShortestPath(Vertex<T> x, Vertex<T> y);
+	
 	public boolean isInGraph(T value);
 	
 	public boolean areAdjacent(Vertex<T> x, Vertex<T> y);

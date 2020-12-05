@@ -7,13 +7,13 @@ import graphs.*;
 
 public class Game implements Serializable {
 	private static final long serialVersionUID = 1L;
+	public static final int NUMBER_OF_CHARACTERS = 10;
 	private int firstPlace;
 	private int secondPlace;
-	private int thirPlace;
+	private int thirdPlace;
 	private int totalEnergy;
 	private IGraph<Character> characters;
 	private HashMap<String, Player> players;
-	public static final int NUMBER_OF_CHARACTERS = 10;
 
 	public Game(int totalEnergy) throws AlreadyHaveCharacter {
 		this.totalEnergy = totalEnergy;
@@ -80,7 +80,6 @@ public class Game implements Serializable {
 
 		characters.addEdge(ten, one, ten.getPower() - one.getPower());
 		characters.addEdge(one, ten, one.getPower() - ten.getPower());
-
 	}
 
 	public void addPlayer(String nickname) {
@@ -121,19 +120,33 @@ public class Game implements Serializable {
 			if (eneryWasted > 0) {
 				won = true;
 			}
-
 			totalEnergy = totalEnergy - energyWasted(x, y);
+		}else {
+			won = createBattle(x, y);
 		}
-
 		return won;
-
 	}
 
-	public String creatingBattle(Vertex<Character> x, Vertex<Character> y) {
-		String story = "";
-
+	public boolean createBattle(Vertex<Character> x, Vertex<Character> y) {
+		characters.addEdge(x.getValue(), y.getValue(), x.getValue().getPower() - y.getValue().getPower());
+		characters.addEdge(y.getValue(), x.getValue(), y.getValue().getPower() - x.getValue().getPower());	
+		boolean won = false;
+		int eneryWasted = energyWasted(x, y);
+		if (eneryWasted > 0) {
+			won = true;
+		}
+		totalEnergy = totalEnergy - energyWasted(x, y);
+		return won;
+	}
+	
+	public String tellStory(Vertex<Character> x, Vertex<Character> y) {
+		String story = "Before " + x.getValue().getName() + " could fight " + y.getValue().getName() +
+				", " + x.getValue().getName() + " had to face ";
+		for (Character character : characters.getShortestPath(x, y)) {
+			story += character.getName()+", ";
+		}
+		story += " in combat. " + x.getValue().getName() + " was victorious and now is ready for this new challenge.";
 		return story;
-
 	}
 
 	public HashMap<String, Player> getPlayers() {
@@ -152,7 +165,7 @@ public class Game implements Serializable {
 		return secondPlace;
 	}
 
-	public int getThirPlace() {
-		return thirPlace;
+	public int getThirdPlace() {
+		return thirdPlace;
 	}
 }
