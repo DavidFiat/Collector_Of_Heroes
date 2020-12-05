@@ -39,6 +39,12 @@ public class GameController {
     private ImageView card8;
     
     @FXML
+    private ImageView character;
+    
+    @FXML
+    private ImageView enemy;
+    
+    @FXML
     public void initialize() {
     	card1.setClip(new Circle(70,70,70));
     	card2.setClip(new Circle(70,70,70));
@@ -59,6 +65,14 @@ public class GameController {
     }
     
     public void defeatCharacter() {
+    	
+    }
+    
+    public void displayCharacterImage() {
+    	
+    }
+    
+    public void displayEnemyImage() {
     	
     }
 }
