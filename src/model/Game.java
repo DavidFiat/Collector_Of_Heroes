@@ -113,29 +113,26 @@ public class Game implements Serializable {
 	}
 
 	public boolean battleTime(Vertex<Character> x, Vertex<Character> y) {
-		boolean won = false;
+		boolean done = false;
 		if (energyWasted(x, y) != Integer.MAX_VALUE) {
-			int eneryWasted = energyWasted(x, y);
-			if (eneryWasted > 0) {
-				won = true;
-			}
-			totalEnergy = totalEnergy - energyWasted(x, y);
+			done = true;
 		}else {
-			won = createBattle(x, y);
+			createBattle(x, y);
 		}
-		return won;
+		return done;
 	}
-
-	public boolean createBattle(Vertex<Character> x, Vertex<Character> y) {
-		characters.addEdge(x.getValue(), y.getValue(), x.getValue().getPower() - y.getValue().getPower());
-		characters.addEdge(y.getValue(), x.getValue(), y.getValue().getPower() - x.getValue().getPower());	
-		boolean won = false;
+	
+	public int battle() {
 		int eneryWasted = energyWasted(x, y);
 		if (eneryWasted > 0) {
-			won = true;
+			done = true;
 		}
-		totalEnergy = totalEnergy - energyWasted(x, y);
-		return won;
+		return totalEnergy = totalEnergy - energyWasted(x, y);
+	}
+
+	public void createBattle(Vertex<Character> x, Vertex<Character> y) {
+		characters.addEdge(x.getValue(), y.getValue(), x.getValue().getPower() - y.getValue().getPower());
+		characters.addEdge(y.getValue(), x.getValue(), y.getValue().getPower() - x.getValue().getPower());	
 	}
 	
 	public String tellStory(Vertex<Character> x, Vertex<Character> y) {
