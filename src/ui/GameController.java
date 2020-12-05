@@ -4,6 +4,7 @@ import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -12,6 +13,10 @@ import javafx.stage.Stage;
 import model.Character;
 
 public class GameController{
+	@FXML
+    private Label power;
+	
+	
     @FXML
     private ImageView card1;
     
@@ -125,5 +130,10 @@ public class GameController{
     @FXML
     void fight(ActionEvent event) {
 
+    }
+    
+    @FXML
+    void showPower(MouseEvent event) {
+    	power.setText("Hola xD");
     }
 }
