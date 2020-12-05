@@ -311,14 +311,12 @@ public class AdjMatrixGraph<T> implements IGraph<T>, Serializable {
 		}
 	}
 	
-	public List<T> getShortestPathList(T x, T y) {
-		Vertex<T> startingVertex = searchVertex(x);
-		Vertex<T> endingVertex = searchVertex(y);
+	public List<T> getShortestPathList(Vertex<T> x, Vertex<T> y) {
 		List<T> vertexValues = new ArrayList<>();
-		dijkstra(startingVertex);
-		while(endingVertex.getPred()!=null) {
-			vertexValues.add(endingVertex.getValue());
-			endingVertex = endingVertex.getPred();
+		dijkstra(x);
+		while(y.getPred()!=null) {
+			vertexValues.add(y.getValue());
+			y = y.getPred();
 		}
 		Collections.reverse(vertexValues);
 		return vertexValues;
