@@ -14,7 +14,10 @@ public class Game implements Serializable {
 	private int totalEnergy;
 	private IGraph<Character> characters;
 	private HashMap<String, Player> players;
-
+	
+	public Game() {
+		
+	}
 	public Game(int totalEnergy) throws AlreadyHaveCharacter {
 		this.totalEnergy = totalEnergy;
 		players = new HashMap<>();
