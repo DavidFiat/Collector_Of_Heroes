@@ -17,6 +17,7 @@ public class Main extends Application{
 	private PrincipalWindowController principal;
 	private double xOffset = 0;
 	private double yOffset = 0;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 		try {
