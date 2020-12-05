@@ -46,6 +46,7 @@ public class SelectPlayerController{
 		gameController = fxmlLoader.getController();
 		gameController.setPrincipalWindow(principal);
 		gameController.displayCharacterImage();
+		gameController.displayEnemyImage();
 		Stage stage = new Stage();
 		root.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override

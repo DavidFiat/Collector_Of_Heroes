@@ -18,16 +18,16 @@ public class Game implements Serializable {
 	public Game() throws AlreadyHaveCharacter {
 		players = new HashMap<>();
 		characters = new AdjMatrixGraph<Character>(true, true);
-		Character one = new Character("Flash", 80);
-		Character two = new Character("Captain America", 35);
-		Character three = new Character("/resources/cards/DOCTOR-STRANGE.jpg", 83);
-		Character four = new Character("Iron Man", 58);
-		Character five = new Character("Thor", 70);
-		Character six = new Character("/resources/cards/SPIDERMAN.jpg", 45);
-		Character seven = new Character("Black Widow", 13);
-		Character eight = new Character("Thanos", 90);
-		Character nine = new Character("Scarlet Witch", 85);
-		Character ten = new Character("Hulk", 79);
+		Character one = new Character("/resources/cards/flash2.jpg", 80);
+		Character two = new Character("/resources/cards/captainAmerica.jpg", 35);
+		Character three = new Character("/resources/cards/doctorStrange.jpg", 83);
+		Character four = new Character("/resources/cards/ironman2.jpg", 58);
+		Character five = new Character("/resources/cards/THOR-6.jpg", 70);
+		Character six = new Character("/resources/cards/spidermanS.jpg", 45);
+		Character seven = new Character("/resources/cards/blackwidow.jpg", 13);
+		Character eight = new Character("/resources/cards/thanos2.jpg", 90);
+		Character nine = new Character("/resources/cards/scarlet.jpg", 85);
+		Character ten = new Character("/resources/cards/hulk2.jpg", 79);
 		Player p = new Player("DavidFiat24");
 		players.put(p.getNickname(), p);
 		p.assignCharacter(one);
@@ -103,8 +103,12 @@ public class Game implements Serializable {
 		return c;
 	}
 
-	public List<Vertex<Character>> getEnemyCharactersVertex() {
-		return characters.getVertices();
+	public List<Character> getEnemyCharactersVertex() {
+		List<Character> enemyCharacters = new ArrayList<Character>();
+		for (int i = 0; i < characters.getVertices().size(); i++) {
+			enemyCharacters.add(characters.getVertices().get(i).getValue());
+		}
+		return enemyCharacters;
 	}
 
 	public int energyWasted(Vertex<Character> x, Vertex<Character> y) {
