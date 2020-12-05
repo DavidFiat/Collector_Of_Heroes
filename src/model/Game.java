@@ -112,7 +112,7 @@ public class Game implements Serializable {
 		return c;
 	}
 
-	public List<Vertex<Character>> getEnemyCharactersVetex() {
+	public List<Vertex<Character>> getEnemyCharactersVertex() {
 		return characters.getVertices();
 	}
 
