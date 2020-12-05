@@ -96,18 +96,29 @@ public class Game implements Serializable {
 	}
 
 	public List<Vertex<Character>> getPlayerCharactersVertex(Player p) {
-		List<Vertex<Character>> c = new ArrayList<Vertex<Character>>(10);
+		List<Vertex<Character>> c = new ArrayList<Vertex<Character>>(5);
 		List<Character> l = getPlayerCharacters(p);
-		for (int i = 0; i < l.size(); i++) {
-			c.add(characters.searchVertex(l.get(i)));
+		while (c.size() != 5) {
+			for (int i = 0; i < l.size(); i++) {
+				int number = (int) (Math.random() * 2) + 1;
+				if (number == 1) {
+					c.add(characters.searchVertex(l.get(i)));
+				}
+			}
 		}
 		return c;
 	}
 
-	public List<Character> getEnemyCharactersVertex() {
-		List<Character> enemyCharacters = new ArrayList<Character>();
-		for (int i = 0; i < characters.getVertices().size(); i++) {
-			enemyCharacters.add(characters.getVertices().get(i).getValue());
+	public List<Vertex<Character>> getEnemyCharactersVertex() {
+		List<Vertex<Character>> enemyCharacters = new ArrayList<Vertex<Character>>(5);
+		List<Vertex<Character>> enemy = characters.getVertices();
+		while (enemyCharacters.size() != 5) {
+			for (int i = 0; i < characters.getVertices().size(); i++) {
+				int number = (int) (Math.random() * 2) + 1;
+				if (number == 1) {
+					enemyCharacters.add(enemy.get(i));
+				}
+			}
 		}
 		return enemyCharacters;
 	}
@@ -119,35 +130,36 @@ public class Game implements Serializable {
 	public boolean battleTime(Vertex<Character> x, Vertex<Character> y) {
 		return energyWasted(x, y) != Integer.MAX_VALUE;
 	}
-	
+
 	public boolean fight(Vertex<Character> x, Vertex<Character> y) {
 		boolean won = false;
 		int eneryWasted = energyWasted(x, y);
 		totalEnergy = totalEnergy - eneryWasted;
-		if (eneryWasted > 0) won = true;
+		if (eneryWasted > 0)
+			won = true;
 		return won;
 	}
 
 	public void createBattle(Vertex<Character> x, Vertex<Character> y) {
 		characters.addEdge(x.getValue(), y.getValue(), x.getValue().getPower() - y.getValue().getPower());
-		characters.addEdge(y.getValue(), x.getValue(), y.getValue().getPower() - x.getValue().getPower());	
+		characters.addEdge(y.getValue(), x.getValue(), y.getValue().getPower() - x.getValue().getPower());
 	}
-	
+
 	public String tellStory(Vertex<Character> x, Vertex<Character> y) {
-		String story = "Before " + x.getValue().getName() + " could fight " + y.getValue().getName() +
-				", " + x.getValue().getName() + " had to face ";
+		String story = "Before " + x.getValue().getName() + " could fight " + y.getValue().getName() + ", "
+				+ x.getValue().getName() + " had to face ";
 		for (Character character : characters.getShortestPath(x, y)) {
-			story += character.getName()+", ";
+			story += character.getName() + ", ";
 		}
 		story += " in combat. " + x.getValue().getName() + " was victorious and now is ready for this new challenge.";
 		createBattle(x, y);
 		return story;
 	}
-	
+
 	public double getBestPossibleScore(Vertex<Character> x) {
 		characters.prim(x);
 		double bestScore = 0;
-		for (Vertex<Character> u: characters.getVertices()) {
+		for (Vertex<Character> u : characters.getVertices()) {
 			bestScore += u.getInitialTimeStamp();
 		}
 		return bestScore;
