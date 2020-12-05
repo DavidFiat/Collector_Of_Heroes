@@ -102,7 +102,6 @@ public class Game implements Serializable {
 			c.add(characters.searchVertex(l.get(i)));
 		}
 		return c;
-
 	}
 
 	public List<Vertex<Character>> getEnemyCharactersVetex() {
