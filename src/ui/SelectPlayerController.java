@@ -36,7 +36,6 @@ public class SelectPlayerController{
     
     @FXML
     public void initialize() {
-    	
     }
     
     @FXML

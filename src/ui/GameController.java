@@ -1,7 +1,6 @@
 package ui;
 
 import java.util.List;
-import java.util.Random;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -13,6 +12,7 @@ import javafx.stage.Stage;
 import model.Character;
 
 public class GameController{
+	
     @FXML
     private ImageView card1;
     
@@ -104,11 +104,11 @@ public class GameController{
     
     public void displayCharacterImage() {
     	List<Character> playerCharacters = principal.getGame().getPlayers().get("DavidFiat24").getCharacters().returnHash();
-    	image1 = new Image(getClass().getResource(playerCharacters.get(new Random().nextInt(playerCharacters.size())).getName()).toExternalForm());
-    	image2 = new Image(getClass().getResource(playerCharacters.get(new Random().nextInt(playerCharacters.size())).getName()).toExternalForm());
-    	image3 = new Image(getClass().getResource(playerCharacters.get(new Random().nextInt(playerCharacters.size())).getName()).toExternalForm());
-    	image4 = new Image(getClass().getResource(playerCharacters.get(new Random().nextInt(playerCharacters.size())).getName()).toExternalForm());
-    	image5 = new Image(getClass().getResource(playerCharacters.get(new Random().nextInt(playerCharacters.size())).getName()).toExternalForm());
+    	image1 = new Image(getClass().getResource(playerCharacters.get(0).getName()).toExternalForm());
+    	image2 = new Image(getClass().getResource(playerCharacters.get(1).getName()).toExternalForm());
+    	image3 = new Image(getClass().getResource(playerCharacters.get(2).getName()).toExternalForm());
+    	image4 = new Image(getClass().getResource(playerCharacters.get(3).getName()).toExternalForm());
+    	image5 = new Image(getClass().getResource(playerCharacters.get(4).getName()).toExternalForm());
     	card1.setImage(image1);
     	card2.setImage(image2);
     	card3.setImage(image3);
@@ -130,30 +130,15 @@ public class GameController{
     	card5.setOnMouseClicked(e -> {
     		character.setImage(image5);
         });
-    	card1.setOnMouseEntered(e -> {
-    	
-        });
-    	card2.setOnMouseEntered(e -> {
-    		character.setImage(image2);
-        });
-    	card3.setOnMouseEntered(e -> {
-    		character.setImage(image3);
-        });
-    	card4.setOnMouseEntered(e -> {
-    		character.setImage(image4);
-        });
-    	card5.setOnMouseEntered(e -> {
-    		character.setImage(image5);
-        });
     }
     
     public void displayEnemyImage() {
     	List<Character> enemyCharacters = principal.getGame().getEnemyCharactersVertex();
-    	image6 = new Image(getClass().getResource(enemyCharacters.get(new Random().nextInt(enemyCharacters.size())).getName()).toExternalForm());
-    	image7 = new Image(getClass().getResource(enemyCharacters.get(new Random().nextInt(enemyCharacters.size())).getName()).toExternalForm());
-    	image8 = new Image(getClass().getResource(enemyCharacters.get(new Random().nextInt(enemyCharacters.size())).getName()).toExternalForm());
-    	image9 = new Image(getClass().getResource(enemyCharacters.get(new Random().nextInt(enemyCharacters.size())).getName()).toExternalForm());
-    	image10 = new Image(getClass().getResource(enemyCharacters.get(new Random().nextInt(enemyCharacters.size())).getName()).toExternalForm());
+    	image6 = new Image(getClass().getResource(enemyCharacters.get(5).getName()).toExternalForm());
+    	image7 = new Image(getClass().getResource(enemyCharacters.get(6).getName()).toExternalForm());
+    	image8 = new Image(getClass().getResource(enemyCharacters.get(7).getName()).toExternalForm());
+    	image9 = new Image(getClass().getResource(enemyCharacters.get(8).getName()).toExternalForm());
+    	image10 = new Image(getClass().getResource(enemyCharacters.get(9).getName()).toExternalForm());
     	card6.setImage(image6);
     	card7.setImage(image7);
     	card8.setImage(image8);
