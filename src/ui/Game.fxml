@@ -40,15 +40,15 @@
       </ImageView>
       <ImageView fx:id="character" fitHeight="293.0" fitWidth="338.0" layoutX="87.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../resources/cards/DOCTOR-STRANGE-6-Keunwoo-Lee.jpg" />
+            <Image url="@../resources/cards/Black-Widow-5.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="card9" fitHeight="150.0" fitWidth="200.0" layoutX="553.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card9" fitHeight="150.0" fitWidth="200.0" layoutX="582.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/Black-Widow-5-Keunwoo-Lee-Variant-Cover.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="card10" fitHeight="150.0" fitWidth="200.0" layoutX="754.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card10" fitHeight="150.0" fitWidth="200.0" layoutX="749.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/CAPTAIN-AMERICA-4-Maxx-Lim.jpg" />
          </image>
@@ -59,17 +59,17 @@
          </image>
       </ImageView>
       <Button layoutX="405.0" layoutY="142.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="88.0" text="FIGHT" />
-      <ImageView fx:id="card6" fitHeight="150.0" fitWidth="200.0" layoutX="510.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card6" fitHeight="150.0" fitWidth="200.0" layoutX="513.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/DOCTOR-STRANGE-6.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="card7" fitHeight="150.0" fitWidth="200.0" layoutX="657.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card7" fitHeight="150.0" fitWidth="200.0" layoutX="659.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/AMAZING-SPIDER-MAN-7.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="card8" fitHeight="150.0" fitWidth="200.0" layoutX="788.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card8" fitHeight="150.0" fitWidth="200.0" layoutX="790.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/THOR-6.jpg" />
          </image>
