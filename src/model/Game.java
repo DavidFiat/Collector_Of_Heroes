@@ -18,16 +18,16 @@ public class Game implements Serializable {
 	public Game() throws AlreadyHaveCharacter {
 		players = new HashMap<>();
 		characters = new AdjMatrixGraph<Character>(true, true);
-		Character one = new Character("Flash", 80);
-		Character two = new Character("Captain America", 35);
+		Character one = new Character("/resources/cards/Flash.jpg", 80);
+		Character two = new Character("/resources/cards/CAPTAIN-AMERICA.jpg", 35);
 		Character three = new Character("/resources/cards/DOCTOR-STRANGE.jpg", 83);
-		Character four = new Character("Iron Man", 58);
-		Character five = new Character("Thor", 70);
+		Character four = new Character("/resources/cards/IRONMAN.jpg", 58);
+		Character five = new Character("/resources/cards/THOR.jpg", 70);
 		Character six = new Character("/resources/cards/SPIDERMAN.jpg", 45);
-		Character seven = new Character("Black Widow", 13);
-		Character eight = new Character("Thanos", 90);
-		Character nine = new Character("Scarlet Witch", 85);
-		Character ten = new Character("Hulk", 79);
+		Character seven = new Character("/resources/cards/Black-Widow.jpg", 13);
+		Character eight = new Character("/resources/cards/THANOS.jpg", 90);
+		Character nine = new Character("/resources/cards/Scarlet-Witch.jpg", 85);
+		Character ten = new Character("/resources/cards/HULK.jpg", 79);
 		Player p = new Player("DavidFiat24");
 		players.put(p.getNickname(), p);
 		p.assignCharacter(one);

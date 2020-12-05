@@ -1,9 +1,7 @@
 package ui;
 
 import java.util.List;
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -12,7 +10,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.Character;
-import javafx.util.Duration;
 
 public class GameController{
     @FXML
@@ -53,17 +50,9 @@ public class GameController{
     
     private PrincipalWindowController principal;
     
-    public Image image1 = new Image(getClass().getResource("/resources/cards/DOCTOR-STRANGE.jpg").toExternalForm());
-    public Image image2 = new Image(getClass().getResource("/resources/cards/SPIDERMAN.jpg").toExternalForm());
-    public Image image3 = new Image(getClass().getResource("/resources/cards/Black-Widow.jpg").toExternalForm());
-    public Image image4 = new Image(getClass().getResource("/resources/cards/Flash.jpg").toExternalForm());
-    public Image image5 = new Image(getClass().getResource("/resources/cards/THOR.jpg").toExternalForm());
-    public Image image6 = new Image(getClass().getResource("/resources/cards/THANOS.jpg").toExternalForm());
-    public Image image7 = new Image(getClass().getResource("/resources/cards/Scarlet-Witch.jpg").toExternalForm());
-    public Image image8 = new Image(getClass().getResource("/resources/cards/CAPTAIN-AMERICA.jpg").toExternalForm());
-    public Image image9 = new Image(getClass().getResource("/resources/cards/IRONMAN.jpg").toExternalForm());
-    public Image image10 = new Image(getClass().getResource("/resources/cards/HULK.jpg").toExternalForm());
-    
+    private Image image1, image2, image3, image4, image5,
+    			image6, image7, image8, image9, image10;
+
     @FXML
     public void initialize() {
     	card1.setClip(new Circle(70,70,70));
@@ -90,12 +79,16 @@ public class GameController{
     
     public void displayCharacterImage() {
     	List<Character> playerCharacters = principal.getGame().getPlayers().get("DavidFiat24").getCharacters().returnHash();
-    	
-    	card1.setImage(new Image(playerCharacters.get(0).getName()));
-    	card2.setImage(new Image(playerCharacters.get(1).getName()));
-    	card3.setImage(new Image(playerCharacters.get(2).getName()));
-    	card4.setImage(new Image(playerCharacters.get(3).getName()));
-    	card5.setImage(new Image(playerCharacters.get(4).getName()));
+    	image1 = new Image(getClass().getResource(playerCharacters.get(0).getName()).toExternalForm());
+    	image2 = new Image(getClass().getResource(playerCharacters.get(1).getName()).toExternalForm());
+    	image3 = new Image(getClass().getResource(playerCharacters.get(2).getName()).toExternalForm());
+    	image4 = new Image(getClass().getResource(playerCharacters.get(3).getName()).toExternalForm());
+    	image5 = new Image(getClass().getResource(playerCharacters.get(4).getName()).toExternalForm());
+    	card1.setImage(image1);
+    	card2.setImage(image2);
+    	card3.setImage(image3);
+    	card4.setImage(image4);
+    	card5.setImage(image5);
     	
     	card1.setOnMouseClicked(e -> {
     		character.setImage(image1);
@@ -103,10 +96,29 @@ public class GameController{
     	card2.setOnMouseClicked(e -> {
     		character.setImage(image2);
         });
+    	card3.setOnMouseClicked(e -> {
+    		character.setImage(image3);
+        });
+    	card4.setOnMouseClicked(e -> {
+    		character.setImage(image4);
+        });
+    	card5.setOnMouseClicked(e -> {
+    		character.setImage(image5);
+        });
     }
     
     public void displayEnemyImage() {
-    	
+    	List<Character> enemyCharacters = principal.getGame().getPlayers().get("DavidFiat24").getCharacters().returnHash();
+    	image1 = new Image(getClass().getResource(playerCharacters.get(0).getName()).toExternalForm());
+    	image2 = new Image(getClass().getResource(playerCharacters.get(1).getName()).toExternalForm());
+    	image3 = new Image(getClass().getResource(playerCharacters.get(2).getName()).toExternalForm());
+    	image4 = new Image(getClass().getResource(playerCharacters.get(3).getName()).toExternalForm());
+    	image5 = new Image(getClass().getResource(playerCharacters.get(4).getName()).toExternalForm());
+    	card1.setImage(image1);
+    	card2.setImage(image2);
+    	card3.setImage(image3);
+    	card4.setImage(image4);
+    	card5.setImage(image5);
     }
     
     public void setPrincipalWindow(PrincipalWindowController principal) {
