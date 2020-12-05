@@ -29,7 +29,7 @@ public class PrincipalWindowController {
 
 	@FXML
 	private Label gameName;
-	
+
 	@FXML
 	public void initialize() throws IOException, AlreadyHaveCharacter {
 		loadData();
