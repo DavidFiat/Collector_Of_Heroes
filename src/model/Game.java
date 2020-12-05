@@ -12,8 +12,7 @@ public class Game implements Serializable {
 	private int secondPlace;
 	private int thirdPlace;
 	private int totalEnergy;
-	
-	
+
 	public int getTotalEnergy() {
 		return totalEnergy;
 	}
@@ -122,17 +121,7 @@ public class Game implements Serializable {
 	}
 
 	public boolean battleTime(Vertex<Character> x, Vertex<Character> y) {
-		boolean won = false;
-		if (energyWasted(x, y) != Integer.MAX_VALUE) {
-			int eneryWasted = energyWasted(x, y);
-			if (eneryWasted > 0) {
-				won = true;
-			}
-			totalEnergy = totalEnergy - energyWasted(x, y);
-		} else {
-			won = createBattle(x, y);
-		}
-		return won;
+		return energyWasted(x, y) != Integer.MAX_VALUE;
 	}
 
 	public String creatingBattle(Vertex<Character> x, Vertex<Character> y) {
