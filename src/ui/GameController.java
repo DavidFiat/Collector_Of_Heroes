@@ -1,5 +1,8 @@
 package ui;
 
+import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -7,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class GameController{
     @FXML
@@ -47,14 +51,14 @@ public class GameController{
     
     public Image image1 = new Image(getClass().getResource("/resources/cards/DOCTOR-STRANGE.jpg").toExternalForm());
     public Image image2 = new Image(getClass().getResource("/resources/cards/SPIDERMAN.jpg").toExternalForm());
-    public Image image3 = new Image(getClass().getResource("/resources/cards/DOCTOR-STRANGE.jpg").toExternalForm());
-    public Image image4 = new Image(getClass().getResource("/resources/cards/DOCTOR-STRANGE.jpg").toExternalForm());
-    public Image image5 = new Image(getClass().getResource("/resources/cards/DOCTOR-STRANGE.jpg").toExternalForm());
-    public Image image6 = new Image(getClass().getResource("/resources/cards/DOCTOR-STRANGE.jpg").toExternalForm());
-    public Image image7 = new Image(getClass().getResource("/resources/cards/DOCTOR-STRANGE.jpg").toExternalForm());
-    public Image image8 = new Image(getClass().getResource("/resources/cards/DOCTOR-STRANGE.jpg").toExternalForm());
-    public Image image9 = new Image(getClass().getResource("/resources/cards/DOCTOR-STRANGE.jpg").toExternalForm());
-    public Image image10 = new Image(getClass().getResource("/resources/cards/DOCTOR-STRANGE.jpg").toExternalForm());
+    public Image image3 = new Image(getClass().getResource("/resources/cards/Black-Widow.jpg").toExternalForm());
+    public Image image4 = new Image(getClass().getResource("/resources/cards/Flash.jpg").toExternalForm());
+    public Image image5 = new Image(getClass().getResource("/resources/cards/THOR.jpg").toExternalForm());
+    public Image image6 = new Image(getClass().getResource("/resources/cards/THANOS.jpg").toExternalForm());
+    public Image image7 = new Image(getClass().getResource("/resources/cards/Scarlet-Witch.jpg").toExternalForm());
+    public Image image8 = new Image(getClass().getResource("/resources/cards/CAPTAIN-AMERICA.jpg").toExternalForm());
+    public Image image9 = new Image(getClass().getResource("/resources/cards/IRONMAN.jpg").toExternalForm());
+    public Image image10 = new Image(getClass().getResource("/resources/cards/HULK.jpg").toExternalForm());
     
     @FXML
     public void initialize() {
@@ -92,5 +96,10 @@ public class GameController{
     
     public void displayEnemyImage() {
     	
+    }
+    
+    @FXML
+    void fight(ActionEvent event) {
+
     }
 }
