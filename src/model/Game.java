@@ -121,14 +121,6 @@ public class Game implements Serializable {
 		}
 		return done;
 	}
-	
-	public int battle() {
-		int eneryWasted = energyWasted(x, y);
-		if (eneryWasted > 0) {
-			done = true;
-		}
-		return totalEnergy = totalEnergy - energyWasted(x, y);
-	}
 
 	public void createBattle(Vertex<Character> x, Vertex<Character> y) {
 		characters.addEdge(x.getValue(), y.getValue(), x.getValue().getPower() - y.getValue().getPower());

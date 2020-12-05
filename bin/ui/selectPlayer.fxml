@@ -8,10 +8,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="782.0" stylesheets="@../resources/selectPlayer.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SelectPlayerController">
    <children>
-      <Button layoutX="678.0" layoutY="436.0" mnemonicParsing="false" text="Choose" />
+      <Button layoutX="678.0" layoutY="436.0" mnemonicParsing="false" onAction="#choose" text="Choose" />
       <ImageView fitHeight="129.0" fitWidth="102.0" layoutX="135.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/characters/e0fecc7bff04bea3213fca2350289e03.gif" />
@@ -34,7 +35,10 @@
       </ImageView>
       <HBox fx:id="tab" layoutY="1.0" prefHeight="32.0" prefWidth="782.0">
          <children>
-            <Label fx:id="player" prefHeight="32.0" prefWidth="210.0" text="SELECT PLAYER" />
+            <Label fx:id="player" prefHeight="32.0" prefWidth="210.0" text="SELECT PLAYER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
             <FontAwesomeIcon iconName="CLOSE" onMouseClicked="#close" size="2em">
                <HBox.margin>
                   <Insets left="550.0" />

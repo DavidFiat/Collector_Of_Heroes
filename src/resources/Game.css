@@ -1,3 +1,8 @@
+@font-face{
+	font-family: 'Karma Suture';
+	src: url('fonts/karma-suture.ttf');
+}
+
 .image-view {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
     -fx-stroke-width: 2.0;
@@ -5,4 +10,15 @@
     -fx-background-radius: 10 10 10 10;
     -fx-padding: 10;
     -fx-background-color: firebrick;
+}
+
+.button {
+    -fx-font-family: 'Karma Suture';
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to right, #5F9BFC, #87BFFF, #ADD7F6);
+}
+
+FontAwesomeIcon: hover{
+    -fx-cursor: hand;
 }
