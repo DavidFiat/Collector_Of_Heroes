@@ -56,9 +56,6 @@ public class GameController{
     
     @FXML
   	private Label totalEnergy;
-    
-    @FXML
-    private Label mstWeight;
   
     private PrincipalWindowController principal;
 
@@ -178,7 +175,7 @@ public class GameController{
     				enemy.setImage(enemyCharacters.get(counter).getImage());
     		}else {
     			for (ImageView imageView : playerCharacters) {
-					if(getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm().equals(imageView.getImage().impl_getUrl())) {
+					if(getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm().equals(imageView.getImage().getUrl())) {
 						imageView.setOnMouseClicked(null);
 						imageView.setOpacity(0.56);
 						break;
@@ -204,11 +201,11 @@ public class GameController{
     }
     
     @FXML
-    public void prim() {
+    public void getBestPossibleScore() {
     	double mstWeight = principal.getGame().getBestPossibleScore(currentCharacter);
     	Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText("BS");
-		alert.setContentText(mstWeight+"");
+		alert.setHeaderText("Details:");
+		alert.setContentText("The best possible score for your current Character is "+mstWeight+".");
 		alert.show();
     }
 }
