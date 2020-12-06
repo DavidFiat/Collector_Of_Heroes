@@ -2,7 +2,6 @@ package ui;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import graphs.Vertex;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -132,6 +132,8 @@ public class GameController{
         });
     }
     
+    
+    
     public void displayEnemyImage() {
     	List<Vertex<Character>> enemies = principal.getGame().getEnemyCharactersVertex();
     	image6 = new Image(getClass().getResource(enemies.get(0).getValue().getUrl()).toExternalForm());
@@ -168,6 +170,11 @@ public class GameController{
     			alert.show();
     			counter++;
     		}else {
+    			for (ImageView imageView : playerCharacters) {
+					if(currentCharacter.getValue().getUrl()==imageView.getImage().getUrl()) {
+						
+					}
+				}
     			
     		}
     		totalEnergy.setText(principal.getGame().getTotalEnergy()+"");
