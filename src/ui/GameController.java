@@ -197,6 +197,15 @@ public class GameController{
     	}
     	totalEnergy.setText(principal.getGame().getTotalEnergy()+"");
     	
-    	if(principal.getGame().getTotalEnergy())
+    	
+    }
+    
+    @FXML
+    public void prim() {
+    	double mstWeight = principal.getGame().getBestPossibleScore(currentCharacter);
+    	Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText("BS");
+		alert.setContentText(mstWeight+"");
+		alert.show();
     }
 }
