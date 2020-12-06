@@ -166,6 +166,7 @@ public class GameController {
 		}else if (Integer.parseInt(totalEnergy.getText()) <= 0 && defeats >= 5) {
 			lostAlert();
 		}
+		
 		principal.getGame().setTotalEnergy(Integer.parseInt(totalEnergy.getText()));
 		if (principal.getGame().battleTime(currentCharacter, currentEnermy)) {
 			if (principal.getGame().fight(currentCharacter, currentEnermy)) {
