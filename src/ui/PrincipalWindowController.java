@@ -33,7 +33,7 @@ public class PrincipalWindowController {
 	@FXML
 	public void initialize() {
 		try {
-			loadData();
+			game = new Game();
 		} catch (AlreadyHaveCharacter e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

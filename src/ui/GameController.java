@@ -1,5 +1,6 @@
 package ui;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import graphs.Vertex;
@@ -9,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -66,12 +66,11 @@ public class GameController{
     
     private List<ImageView> playerCharacters, enemyCharacters;
     
-    private int counter, counter2;
+    private int counter;
     
     @FXML
     public void initialize() {
     	counter = 0;
-    	counter2 = 0;
     	playerCharacters = new ArrayList<ImageView>();
     	enemyCharacters = new ArrayList<ImageView>();
     	card1.setClip(new Circle(70,70,70));
@@ -130,9 +129,7 @@ public class GameController{
     		character.setImage(image5);
     		currentCharacter = characters.get(4);
         });
-    }
-    
-    
+    } 
     
     public void displayEnemyImage() {
     	List<Vertex<Character>> enemies = principal.getGame().getEnemyCharactersVertex();
@@ -161,6 +158,7 @@ public class GameController{
 
     @FXML
     void fight(ActionEvent event) {
+    	principal.getGame().setTotalEnergy(Integer.parseInt(totalEnergy.getText()));
     	if(principal.getGame().battleTime(currentCharacter, currentEnermy)) {
     		if(principal.getGame().fight(currentCharacter, currentEnermy)) {
     			enemyCharacters.get(counter).setOpacity(0.56);
@@ -169,19 +167,49 @@ public class GameController{
     			alert.setContentText(currentCharacter.getValue().getName()+" wins this fight!");
     			alert.show();
     			counter++;
+    			
     		}else {
     			for (ImageView imageView : playerCharacters) {
-					if(currentCharacter.getValue().getUrl()==imageView.getImage().getUrl()) {
-						
+					if(getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm().equals(imageView.getImage().getUrl())) {
+						imageView.setOnMouseClicked(null);
+						imageView.setOpacity(0.56);
+						break;
 					}
 				}
-    			
+    			Alert alert = new Alert(AlertType.INFORMATION);
+    			alert.setHeaderText("Defeat!");
+    			alert.setContentText(currentCharacter.getValue().getName()+" lost this fight...");
+    			alert.show();
     		}
     		totalEnergy.setText(principal.getGame().getTotalEnergy()+"");
     	}else {
+    		String story = principal.getGame().tellStory(currentCharacter, currentEnermy);
+    		Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText("Story");
+			alert.setContentText(story);
+			alert.show();
+    		principal.getGame().createBattle(currentCharacter, currentEnermy);
     		
+    		if(principal.getGame().fight(currentCharacter, currentEnermy)) {
+    			enemyCharacters.get(counter).setOpacity(0.56);
+    			alert.setHeaderText("Victory!");
+    			alert.setContentText(currentCharacter.getValue().getName()+" wins this fight!");
+    			alert.show();
+    			counter++;
+    		}else {
+    			for (ImageView imageView : playerCharacters) {
+					if(getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm().equals(imageView.getImage().getUrl())) {
+						imageView.setOnMouseClicked(null);
+						imageView.setOpacity(0.56);
+						break;
+					}
+				}
+    			alert.setHeaderText("Defeat!");
+    			alert.setContentText(currentCharacter.getValue().getName()+" lost this fight...");
+    			alert.show();
+    		}
+    		totalEnergy.setText(principal.getGame().getTotalEnergy()+"");
     	}
-    	
     }
     
     public void defeatCharacter() {
