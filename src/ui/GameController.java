@@ -56,6 +56,9 @@ public class GameController{
     
     @FXML
   	private Label totalEnergy;
+    
+    @FXML
+    private Label mstWeight;
   
     private PrincipalWindowController principal;
 
