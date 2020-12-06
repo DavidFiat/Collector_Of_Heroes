@@ -203,9 +203,15 @@ public class GameController{
     @FXML
     public void getBestPossibleScore() {
     	double mstWeight = principal.getGame().getBestPossibleScore(currentCharacter);
+    	String text = "";
+    	if(mstWeight<=0) {
+    		text = "Your current character cannot win on his own. Switch character your character!";
+    	}else {
+    		text = "The best possible score for your current Character is "+mstWeight+".";
+    	}
     	Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setHeaderText("Details:");
-		alert.setContentText("The best possible score for your current Character is "+mstWeight+".");
+		alert.setContentText(text);
 		alert.show();
     }
 }
