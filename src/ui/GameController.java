@@ -16,8 +16,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.Character;
 
-public class GameController{
-	
+public class GameController{	
     @FXML
     private ImageView card1;
     
