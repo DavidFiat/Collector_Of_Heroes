@@ -160,12 +160,13 @@ public class GameController {
 
 	@FXML
 	void fight(ActionEvent event) {
-		if (victories > 4) {
+		if (victories >= 5 && Integer.parseInt(totalEnergy.getText()) > 0) {
+			System.out.println(victories);
 			winAlert();
-		}
-		if (Integer.parseInt(totalEnergy.getText()) <= 0 && defeats > 4) {
+		}else if (Integer.parseInt(totalEnergy.getText()) <= 0 && defeats >= 5) {
 			lostAlert();
 		}
+		
 		principal.getGame().setTotalEnergy(Integer.parseInt(totalEnergy.getText()));
 		if (principal.getGame().battleTime(currentCharacter, currentEnermy)) {
 			if (principal.getGame().fight(currentCharacter, currentEnermy)) {
@@ -184,7 +185,7 @@ public class GameController {
 			} else {
 				for (ImageView imageView : playerCharacters) {
 					if (getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm()
-							.equals(imageView.getImage().getUrl())) {
+							.equals(imageView.getImage().impl_getUrl())) {
 						imageView.setOnMouseClicked(null);
 						imageView.setOpacity(0.56);
 						break;
