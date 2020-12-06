@@ -29,12 +29,12 @@
             <Image url="@../resources/cards/THOR-6.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="card4" fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="514.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card4" fitHeight="150.0" fitWidth="200.0" layoutX="58.0" layoutY="514.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/Black-Widow-5-Keunwoo-Lee-Variant-Cover.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="card5" fitHeight="150.0" fitWidth="200.0" layoutX="198.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="card5" fitHeight="150.0" fitWidth="200.0" layoutX="212.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/CAPTAIN-AMERICA-4-Maxx-Lim.jpg" />
          </image>
@@ -59,7 +59,7 @@
             <Image url="@../resources/cards/DOCTOR-STRANGE-6-Keunwoo-Lee.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="414.0" layoutY="165.0" mnemonicParsing="false" onAction="#fight" prefHeight="53.0" prefWidth="135.0" text="FIGHT" />
+      <Button layoutX="414.0" layoutY="129.0" mnemonicParsing="false" onAction="#fight" prefHeight="53.0" prefWidth="135.0" text="FIGHT" />
       <ImageView fx:id="card6" fitHeight="150.0" fitWidth="200.0" layoutX="515.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/cards/DOCTOR-STRANGE-6.jpg" />
@@ -76,6 +76,7 @@
          </image>
       </ImageView>
       <FontAwesomeIcon fill="#a32fb5" iconName="CLOSE" layoutX="931.0" layoutY="21.0" onMouseClicked="#close" size="2em" />
-      <Label fx:id="totalEnergy" layoutX="466.0" layoutY="72.0" text="80" />
+      <Label fx:id="totalEnergy" layoutX="463.0" layoutY="72.0" text="80" />
+      <Button layoutX="413.0" layoutY="221.0" mnemonicParsing="false" onAction="#getBestPossibleScore" prefHeight="53.0" prefWidth="135.0" text="PRIM" />
    </children>
 </Pane>
