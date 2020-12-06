@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -62,6 +63,7 @@ public class SelectPlayerController{
 			}
 		});
 		Scene scene = new Scene(root);
+		scene.setCursor(Cursor.cursor("https://icons.iconarchive.com/icons/imil/role-playing/32/Woman-3-icon.png"));
 		stage.getIcons().add(new Image(Main.class.getResourceAsStream("video-game.png")));
 		stage.setTitle("Collector of heroes");
 		stage.initStyle(StageStyle.TRANSPARENT);
