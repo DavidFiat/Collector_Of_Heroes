@@ -19,7 +19,7 @@ Class diagram: [***link***](https://drive.google.com/file/d/1OmmFeyitOQ4iscMQAtV
 ADT: [***link***](https://drive.google.com/file/d/1BMlRW3fxs6Um3GoxwfjJKJ_SSXxF32e4/view?usp=sharing) <br>
 
 
-##Video
+## Video
 You can find a preview here: https://youtu.be/gOFpP9dajjM
 ## How the game looks like
 Here you can see a preview for the game, its style and design! We used as inspiration indie game designs.
