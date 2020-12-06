@@ -204,7 +204,7 @@ public class GameController{
     	double mstWeight = principal.getGame().getBestPossibleScore(currentCharacter);
     	String text = "";
     	if(mstWeight<=0) {
-    		text = "Your current character cannot win on his own. Switch character your character!";
+    		text = "Your current character cannot win on his own. Switch your character!";
     	}else {
     		text = "The best possible score for your current Character is "+mstWeight+".";
     	}
