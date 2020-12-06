@@ -147,8 +147,8 @@ public class Game implements Serializable {
 	public String tellStory(Vertex<Character> x, Vertex<Character> y) {
 		String story = "Before " + x.getValue().getName() + " could fight " + y.getValue().getName() + ", "
 				+ x.getValue().getName() + " had to face ";
-		for (Character character : characters.getShortestPath(x, y)) {
-			story += character.getName() + ", ";
+		for (int i = 0; i < characters.getShortestPath(x, y).size()-1; i++) {
+			story += characters.getShortestPath(x, y).get(i).getName() + ", ";
 		}
 		story += " in combat. " + x.getValue().getName() + " was victorious and now is ready for this new challenge.";
 		createBattle(x, y);

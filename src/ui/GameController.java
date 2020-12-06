@@ -65,13 +65,11 @@ public class GameController {
 
 	private List<ImageView> playerCharacters, enemyCharacters;
 
-	private int counter, victories, defeats;
+	private int counter;
 
 	@FXML
 	public void initialize() {
 		counter = 0;
-		victories = 0;
-		defeats = 0;
 		playerCharacters = new ArrayList<ImageView>();
 		enemyCharacters = new ArrayList<ImageView>();
 		card1.setClip(new Circle(70, 70, 70));
@@ -160,13 +158,6 @@ public class GameController {
 
 	@FXML
 	void fight(ActionEvent event) {
-		if (victories >= 5 && Integer.parseInt(totalEnergy.getText()) > 0) {
-			System.out.println(victories);
-			winAlert();
-		}else if (Integer.parseInt(totalEnergy.getText()) <= 0 && defeats >= 5) {
-			lostAlert();
-		}
-		
 		principal.getGame().setTotalEnergy(Integer.parseInt(totalEnergy.getText()));
 		if (principal.getGame().battleTime(currentCharacter, currentEnermy)) {
 			if (principal.getGame().fight(currentCharacter, currentEnermy)) {
@@ -181,11 +172,10 @@ public class GameController {
 					currentEnermy = enemies.get(counter);
 					enemy.setImage(enemyCharacters.get(counter).getImage());
 				}
-				victories++;
 			} else {
 				for (ImageView imageView : playerCharacters) {
 					if (getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm()
-							.equals(imageView.getImage().impl_getUrl())) {
+							.equals(imageView.getImage().getUrl())) {
 						imageView.setOnMouseClicked(null);
 						imageView.setOpacity(0.56);
 						break;
@@ -196,7 +186,6 @@ public class GameController {
 				alert.setContentText(currentCharacter.getValue().getName() + " lost this fight...");
 				alert.show();
 				character.setImage(null);
-				defeats++;
 			}
 		} else {
 			String story = principal.getGame().tellStory(currentCharacter, currentEnermy);
@@ -207,21 +196,6 @@ public class GameController {
 			principal.getGame().createBattle(currentCharacter, currentEnermy);
 		}
 		totalEnergy.setText(principal.getGame().getTotalEnergy() + "");
-
-	}
-
-	private void lostAlert() {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText("LOST");
-		alert.setContentText("You lost");
-		alert.show();
-	}
-
-	private void winAlert() {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText("WIN");
-		alert.setContentText("You win");
-		alert.show();
 	}
     
     @FXML
