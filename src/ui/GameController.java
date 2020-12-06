@@ -184,7 +184,7 @@ public class GameController {
 			} else {
 				for (ImageView imageView : playerCharacters) {
 					if (getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm()
-							.equals(imageView.getImage().impl_getUrl())) {
+							.equals(imageView.getImage().getUrl())) {
 						imageView.setOnMouseClicked(null);
 						imageView.setOpacity(0.56);
 						break;
@@ -203,7 +203,6 @@ public class GameController {
 			alert.setHeaderText("Story");
 			alert.setContentText(story);
 			alert.show();
-<<<<<<< HEAD
 			principal.getGame().createBattle(currentCharacter, currentEnermy);
 		}
 		totalEnergy.setText(principal.getGame().getTotalEnergy() + "");
@@ -223,24 +222,6 @@ public class GameController {
 		alert.setContentText("You win");
 		alert.show();
 	}
-
-	@FXML
-	public void getBestPossibleScore() {
-		double mstWeight = principal.getGame().getBestPossibleScore(currentCharacter);
-		String text = "";
-		if (mstWeight <= 0) {
-			text = "Your current character cannot win on his own. Switch character your character!";
-		} else {
-			text = "The best possible score for your current Character is " + mstWeight + ".";
-		}
-		Alert alert = new Alert(AlertType.INFORMATION);
-=======
-    		principal.getGame().createBattle(currentCharacter, currentEnermy);
-    	}
-    	totalEnergy.setText(principal.getGame().getTotalEnergy()+"");
-    	
-    	
-    }
     
     @FXML
     public void getBestPossibleScore() {
@@ -252,7 +233,6 @@ public class GameController {
     		text = "The best possible score for your current Character is "+mstWeight+".";
     	}
     	Alert alert = new Alert(AlertType.INFORMATION);
->>>>>>> master
 		alert.setHeaderText("Details:");
 		alert.setContentText(text);
 		alert.show();
