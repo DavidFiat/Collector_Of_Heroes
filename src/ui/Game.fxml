@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -75,5 +76,6 @@
          </image>
       </ImageView>
       <FontAwesomeIcon fill="#a32fb5" iconName="CLOSE" layoutX="915.0" layoutY="22.0" onMouseClicked="#close" size="2em" />
+      <Label fx:id="totalEnergy" layoutX="433.0" layoutY="85.0" text="80" />
    </children>
 </Pane>
