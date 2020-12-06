@@ -67,11 +67,13 @@ public class GameController{
     
     private List<ImageView> playerCharacters, enemyCharacters;
     
-    private int counter;
+    private int counter, victories, defeats;
     
     @FXML
     public void initialize() {
     	counter = 0;
+    	victories = 0;
+    	defeats = 0;
     	playerCharacters = new ArrayList<ImageView>();
     	enemyCharacters = new ArrayList<ImageView>();
     	card1.setClip(new Circle(70,70,70));
@@ -194,5 +196,7 @@ public class GameController{
     		principal.getGame().createBattle(currentCharacter, currentEnermy);
     	}
     	totalEnergy.setText(principal.getGame().getTotalEnergy()+"");
+    	
+    	if(principal.getGame().getTotalEnergy())
     }
 }
