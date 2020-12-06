@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -54,6 +55,9 @@ public class GameController {
 	private ImageView enemy;
 
 	@FXML
+	private Button fight;
+
+	@FXML
 	private Label totalEnergy;
 
 	private PrincipalWindowController principal;
@@ -65,10 +69,11 @@ public class GameController {
 
 	private List<ImageView> playerCharacters, enemyCharacters;
 
-	private int counter;
+	private int counter, victories, defeats;
 
 	@FXML
 	public void initialize() {
+		fight.setDisable(true);
 		counter = 0;
 		playerCharacters = new ArrayList<ImageView>();
 		enemyCharacters = new ArrayList<ImageView>();
@@ -110,22 +115,27 @@ public class GameController {
 		playerCharacters.add(card5);
 
 		card1.setOnMouseClicked(e -> {
+			fight.setDisable(false);
 			character.setImage(image1);
 			currentCharacter = characters.get(0);
 		});
 		card2.setOnMouseClicked(e -> {
+			fight.setDisable(false);
 			character.setImage(image2);
 			currentCharacter = characters.get(1);
 		});
 		card3.setOnMouseClicked(e -> {
+			fight.setDisable(false);
 			character.setImage(image3);
 			currentCharacter = characters.get(2);
 		});
 		card4.setOnMouseClicked(e -> {
+			fight.setDisable(false);
 			character.setImage(image4);
 			currentCharacter = characters.get(3);
 		});
 		card5.setOnMouseClicked(e -> {
+			fight.setDisable(false);
 			character.setImage(image5);
 			currentCharacter = characters.get(4);
 		});
@@ -158,6 +168,12 @@ public class GameController {
 
 	@FXML
 	void fight(ActionEvent event) {
+		if (victories >=4 && Integer.parseInt(totalEnergy.getText()) > 0) {
+			System.out.println(victories);
+			winAlert();
+		}else if (Integer.parseInt(totalEnergy.getText()) <= 0 || defeats >= 5) {
+			lostAlert();
+		}
 		principal.getGame().setTotalEnergy(Integer.parseInt(totalEnergy.getText()));
 		if (principal.getGame().battleTime(currentCharacter, currentEnermy)) {
 			if (principal.getGame().fight(currentCharacter, currentEnermy)) {
@@ -197,17 +213,31 @@ public class GameController {
 		}
 		totalEnergy.setText(principal.getGame().getTotalEnergy() + "");
 	}
-    
-    @FXML
-    public void getBestPossibleScore() {
-    	double mstWeight = principal.getGame().getBestPossibleScore(currentCharacter);
-    	String text = "";
-    	if(mstWeight<=0) {
-    		text = "Your current character cannot win on his own. Switch your character!";
-    	}else {
-    		text = "The best possible score for your current Character is "+mstWeight+".";
-    	}
-    	Alert alert = new Alert(AlertType.INFORMATION);
+	
+	private void lostAlert() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText("LOST");
+		alert.setContentText("You lost");
+		alert.show();
+	}
+
+	private void winAlert() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText("WIN");
+		alert.setContentText("You win");
+		alert.show();
+	}
+
+	@FXML
+	public void getBestPossibleScore() {
+		double mstWeight = principal.getGame().getBestPossibleScore(currentCharacter);
+		String text = "";
+		if(mstWeight<=50) {
+			text = "Your current character cannot win on his own. Switch your character!";
+		}else {
+			text = "The best possible score for your current Character is "+mstWeight+".";
+		}
+		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setHeaderText("Details:");
 		alert.setContentText(text);
 		alert.show();
