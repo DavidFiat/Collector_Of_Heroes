@@ -63,13 +63,17 @@ public class GameController{
     			image6, image7, image8, image9, image10;
     private Vertex<Character> currentCharacter, currentEnermy;
     
+    private List<Vertex<Character>> enemies;
+    
     private List<ImageView> playerCharacters, enemyCharacters;
     
-    private int counter;
+    private int counter, victories, defeats;
     
     @FXML
     public void initialize() {
     	counter = 0;
+    	victories = 0;
+    	defeats = 0;
     	playerCharacters = new ArrayList<ImageView>();
     	enemyCharacters = new ArrayList<ImageView>();
     	card1.setClip(new Circle(70,70,70));
@@ -131,7 +135,7 @@ public class GameController{
     } 
     
     public void displayEnemyImage() {
-    	List<Vertex<Character>> enemies = principal.getGame().getEnemyCharactersVertex();
+    	enemies = principal.getGame().getEnemyCharactersVertex();
     	image6 = new Image(getClass().getResource(enemies.get(0).getValue().getUrl()).toExternalForm());
     	image7 = new Image(getClass().getResource(enemies.get(1).getValue().getUrl()).toExternalForm());
     	image8 = new Image(getClass().getResource(enemies.get(2).getValue().getUrl()).toExternalForm());
@@ -155,8 +159,7 @@ public class GameController{
     	this.principal = principal;
     }
 
-    @SuppressWarnings("deprecation")
-	@FXML
+    @FXML
     void fight(ActionEvent event) {
     	principal.getGame().setTotalEnergy(Integer.parseInt(totalEnergy.getText()));
     	if(principal.getGame().battleTime(currentCharacter, currentEnermy)) {
@@ -167,10 +170,12 @@ public class GameController{
     			alert.setContentText(currentCharacter.getValue().getName()+" wins this fight!");
     			alert.show();
     			counter++;
-    			
+    			currentEnermy = enemies.get(counter);
+    			if(counter<5)
+    				enemy.setImage(enemyCharacters.get(counter).getImage());
     		}else {
     			for (ImageView imageView : playerCharacters) {
-					if(getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm().equals(imageView.getImage().impl_getUrl())) {
+					if(getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm().equals(imageView.getImage().getUrl())) {
 						imageView.setOnMouseClicked(null);
 						imageView.setOpacity(0.56);
 						break;
@@ -180,8 +185,8 @@ public class GameController{
     			alert.setHeaderText("Defeat!");
     			alert.setContentText(currentCharacter.getValue().getName()+" lost this fight...");
     			alert.show();
+    			character.setImage(null);
     		}
-    		totalEnergy.setText(principal.getGame().getTotalEnergy()+"");
     	}else {
     		String story = principal.getGame().tellStory(currentCharacter, currentEnermy);
     		Alert alert = new Alert(AlertType.INFORMATION);
@@ -189,31 +194,19 @@ public class GameController{
 			alert.setContentText(story);
 			alert.show();
     		principal.getGame().createBattle(currentCharacter, currentEnermy);
-    		
-    		if(principal.getGame().fight(currentCharacter, currentEnermy)) {
-    			enemyCharacters.get(counter).setOpacity(0.56);
-    			alert.setHeaderText("Victory!");
-    			alert.setContentText(currentCharacter.getValue().getName()+" wins this fight!");
-    			alert.show();
-    			counter++;
-    		}else {
-    			for (ImageView imageView : playerCharacters) {
-					if(getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm().equals(imageView.getImage().impl_getUrl())) {
-						imageView.setOnMouseClicked(null);
-						imageView.setOpacity(0.56);
-						break;
-					}
-				}
-    			alert.setHeaderText("Defeat!");
-    			alert.setContentText(currentCharacter.getValue().getName()+" lost this fight...");
-    			alert.show();
-    		}
-    		totalEnergy.setText(principal.getGame().getTotalEnergy()+"");
     	}
+    	totalEnergy.setText(principal.getGame().getTotalEnergy()+"");
+    	
+    	
     }
     
-    public void defeatCharacter() {
-    	
+    @FXML
+    public void prim() {
+    	double mstWeight = principal.getGame().getBestPossibleScore(currentCharacter);
+    	Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText("BS");
+		alert.setContentText(mstWeight+"");
+		alert.show();
     }
     
     @FXML
