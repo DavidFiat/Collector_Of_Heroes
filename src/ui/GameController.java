@@ -20,7 +20,7 @@ public class GameController {
 	@FXML
 	private ImageView card1;
 
-	@FXML
+	@FXML	
 	private ImageView card2;
 
 	@FXML
