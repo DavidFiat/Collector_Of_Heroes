@@ -17,7 +17,6 @@ import javafx.stage.Stage;
 import model.Character;
 
 public class GameController{
-	
     @FXML
     private ImageView card1;
     
