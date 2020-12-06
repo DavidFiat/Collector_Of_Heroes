@@ -1,6 +1,5 @@
 package ui;
 
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import graphs.Vertex;
@@ -215,5 +214,10 @@ public class GameController{
     
     public void defeatCharacter() {
     	
+    }
+    
+    @FXML
+    void prim(ActionEvent event) {
+
     }
 }
