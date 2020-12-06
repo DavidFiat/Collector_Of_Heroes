@@ -160,10 +160,10 @@ public class GameController {
 
 	@FXML
 	void fight(ActionEvent event) {
-		if (victories >= 5 && Integer.parseInt(totalEnergy.getText()) > 0) {
+		if (victories >=5 && Integer.parseInt(totalEnergy.getText()) > 0) {
 			System.out.println(victories);
 			winAlert();
-		}else if (Integer.parseInt(totalEnergy.getText()) <= 0 && defeats >= 5) {
+		}else if (Integer.parseInt(totalEnergy.getText()) <= 0 || defeats >= 5) {
 			lostAlert();
 		}
 		
@@ -228,7 +228,7 @@ public class GameController {
     public void getBestPossibleScore() {
     	double mstWeight = principal.getGame().getBestPossibleScore(currentCharacter);
     	String text = "";
-    	if(mstWeight<=0) {
+    	if(mstWeight<=50) {
     		text = "Your current character cannot win on his own. Switch your character!";
     	}else {
     		text = "The best possible score for your current Character is "+mstWeight+".";
