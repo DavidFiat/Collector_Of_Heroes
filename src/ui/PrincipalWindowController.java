@@ -18,6 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Game;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 
@@ -62,6 +63,7 @@ public class PrincipalWindowController {
 			}
 		});
 		Scene scene = new Scene(root);
+		scene.setCursor(Cursor.cursor("https://icons.iconarchive.com/icons/imil/role-playing/32/Woman-3-icon.png"));
 		stage.getIcons().add(new Image(Main.class.getResourceAsStream("video-game.png")));
 		stage.setTitle("Heroes");
 		stage.initStyle(StageStyle.TRANSPARENT);
