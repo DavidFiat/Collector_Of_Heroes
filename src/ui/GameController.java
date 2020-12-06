@@ -178,7 +178,7 @@ public class GameController{
     				enemy.setImage(enemyCharacters.get(counter).getImage());
     		}else {
     			for (ImageView imageView : playerCharacters) {
-					if(getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm().equals(imageView.getImage().getUrl())) {
+					if(getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm().equals(imageView.getImage().impl_getUrl())) {
 						imageView.setOnMouseClicked(null);
 						imageView.setOpacity(0.56);
 						break;
@@ -210,10 +210,5 @@ public class GameController{
 		alert.setHeaderText("BS");
 		alert.setContentText(mstWeight+"");
 		alert.show();
-    }
-    
-    @FXML
-    void prim(ActionEvent event) {
-
     }
 }
