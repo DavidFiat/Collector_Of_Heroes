@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 public class Character implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String name;
+	private String name, url;
 	private int power;
 
-	public Character(String name, int power) {
+	public Character(String url, String name, int power) {
+		this.url = url;
 		this.name = name;
 		this.power = power;
 	}
@@ -28,6 +29,14 @@ public class Character implements Serializable {
 		this.power = power;
 	}
 	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	@Override
 	public String toString() {
 		return "Character [name=" + name + ", power=" + power + "]";

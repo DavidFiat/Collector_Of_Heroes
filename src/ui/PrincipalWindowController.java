@@ -31,7 +31,7 @@ public class PrincipalWindowController {
 	private Label gameName;
 
 	@FXML
-	public void initialize() throws FileNotFoundException, IOException {
+	public void initialize() {
 		try {
 			loadData();
 		} catch (AlreadyHaveCharacter e) {

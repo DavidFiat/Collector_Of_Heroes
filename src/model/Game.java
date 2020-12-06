@@ -19,16 +19,16 @@ public class Game implements Serializable {
 		System.out.println("Wqeqwe");
 		players = new HashMap<>();
 		characters = new AdjMatrixGraph<Character>(true, true);
-		Character one = new Character("/resources/cards/flash2.jpg", 80);
-		Character two = new Character("/resources/cards/captainAmerica.jpg", 35);
-		Character three = new Character("/resources/cards/doctorStrange.jpg", 83);
-		Character four = new Character("/resources/cards/ironman2.jpg", 58);
-		Character five = new Character("/resources/cards/THOR-6.jpg", 70);
-		Character six = new Character("/resources/cards/spidermanS.jpg", 45);
-		Character seven = new Character("/resources/cards/blackwidow.jpg", 13);
-		Character eight = new Character("/resources/cards/thanos2.jpg", 90);
-		Character nine = new Character("/resources/cards/scarlet.jpg", 85);
-		Character ten = new Character("/resources/cards/hulk2.jpg", 79);
+		Character one = new Character("/resources/cards/flash2.jpg", "Flash", 80);
+		Character two = new Character("/resources/cards/captainAmerica.jpg", "Captain America", 35);
+		Character three = new Character("/resources/cards/doctorStrange.jpg", "Doctor Strange", 83);
+		Character four = new Character("/resources/cards/ironman2.jpg", "Ironman", 58);
+		Character five = new Character("/resources/cards/THOR-6.jpg", "Thor", 70);
+		Character six = new Character("/resources/cards/spidermanS.jpg", "Spiderman", 45);
+		Character seven = new Character("/resources/cards/blackwidow.jpg", "Black Widow", 13);
+		Character eight = new Character("/resources/cards/thanos2.jpg", "Thanos", 90);
+		Character nine = new Character("/resources/cards/scarlet.jpg", "Scarlet", 85);
+		Character ten = new Character("/resources/cards/hulk2.jpg", "Hulk", 79);
 		Player p = new Player("DavidFiat24");
 		players.put(p.getNickname(), p);
 		p.assignCharacter(one);
@@ -98,10 +98,10 @@ public class Game implements Serializable {
 	public List<Vertex<Character>> getPlayerCharactersVertex(Player p) {
 		List<Vertex<Character>> c = new ArrayList<Vertex<Character>>(5);
 		List<Character> l = getPlayerCharacters(p);
-		while (c.size() != 5) {
-			for (int i = 0; i < l.size(); i++) {
+		while (c.size() <= 5) {
+			for (int i = 0; i < l.size() && c.size()<=5; i++) {
 				int number = (int) (Math.random() * 2) + 1;
-				if (number == 1) {
+				if (number == 2) {
 					c.add(characters.searchVertex(l.get(i)));
 				}
 			}
@@ -112,10 +112,10 @@ public class Game implements Serializable {
 	public List<Vertex<Character>> getEnemyCharactersVertex() {
 		List<Vertex<Character>> enemyCharacters = new ArrayList<Vertex<Character>>(5);
 		List<Vertex<Character>> enemy = characters.getVertices();
-		while (enemyCharacters.size() != 5) {
-			for (int i = 0; i < characters.getVertices().size(); i++) {
+		while (enemyCharacters.size() <= 5) {
+			for (int i = 0; i < enemy.size() && enemyCharacters.size()<=5; i++) {
 				int number = (int) (Math.random() * 2) + 1;
-				if (number == 1) {
+				if (number == 2) {
 					enemyCharacters.add(enemy.get(i));
 				}
 			}
@@ -183,5 +183,13 @@ public class Game implements Serializable {
 
 	public int getThirdPlace() {
 		return thirdPlace;
+	}
+
+	public int getTotalEnergy() {
+		return totalEnergy;
+	}
+	
+	public void setTotalEnergy(int totalEnergy) {
+		this.totalEnergy = totalEnergy;
 	}
 }
