@@ -77,6 +77,6 @@
       </ImageView>
       <FontAwesomeIcon fill="#a32fb5" iconName="CLOSE" layoutX="931.0" layoutY="21.0" onMouseClicked="#close" size="2em" />
       <Label fx:id="totalEnergy" layoutX="463.0" layoutY="72.0" text="80" />
-      <Button layoutX="413.0" layoutY="221.0" mnemonicParsing="false" onAction="#getBestPossibleScore" prefHeight="53.0" prefWidth="135.0" text="PRIM" />
+      <Button layoutX="413.0" layoutY="221.0" mnemonicParsing="false" onAction="#getBestPossibleScore" prefHeight="53.0" prefWidth="135.0" text="CLUE" />
    </children>
 </Pane>
