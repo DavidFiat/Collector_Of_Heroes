@@ -171,6 +171,7 @@ public class GameController {
 		this.principal = principal;
 	}
 
+	@SuppressWarnings("deprecation")
 	@FXML
 	void fight(ActionEvent event) {
 		principal.getGame().setTotalEnergy(Integer.parseInt(totalEnergy.getText()));
@@ -199,7 +200,7 @@ public class GameController {
 				}
 				for (ImageView imageView : playerCharacters) {
 					if (getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm()
-							.equals(imageView.getImage().getUrl())) {
+							.equals(imageView.getImage().impl_getUrl())) {
 						imageView.setOnMouseClicked(null);
 						imageView.setOpacity(0.56);
 						playerCharacters.remove(imageView);
