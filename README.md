@@ -35,11 +35,19 @@ Here you can see a preview for the game, its style and design! We used as inspir
 - Juan David Pelaez Valencia: [jdpv01](https://github.com/jdpv01) <br>
 - Jhoan David Fiat Restrepo:  [DavidFiat](https://github.com/DavidFiat)
 ## Installation
+You have 2 ways to use this program:
+### IDE COMPILER
 1. Please turn sound on for a better experience.
 2. Have installed an IDE such like: Eclipse, VS Code, and so on.
 3. Use `git clone`https://github.com/DavidFiat/Collector_Of_Heroes
 4. Open your IDE and import project 'Collector_Of_Heroes'
 5. Go to the Main.java and run it
+
+### EXE FILE
+1. Go to the folder called 'ejecutable' You can go directly [***here***](ejecutable)
+2. Open file Collector of heroes.exe
+3. Turn sound on for a better experience
+4. Enjoy it and play now!
 
 [![forthebadge](https://forthebadge.com/images/badges/ages-12.svg)](https://forthebadge.com)
 ##### Have fun! :)
