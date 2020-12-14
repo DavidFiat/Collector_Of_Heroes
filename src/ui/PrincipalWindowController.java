@@ -92,17 +92,17 @@ public class PrincipalWindowController {
 		oos.close();
 	}
 
-	private void loadData() throws AlreadyHaveCharacter {
-		try {
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data/data.fiat_fernandez_pelaez"));
-			game = (Game) ois.readObject();
-			ois.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
+//	private void loadData() throws AlreadyHaveCharacter {
+//		try {
+//			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data/data.fiat_fernandez_pelaez"));
+//			game = (Game) ois.readObject();
+//			ois.close();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 	public Game getGame() {
 		return game;

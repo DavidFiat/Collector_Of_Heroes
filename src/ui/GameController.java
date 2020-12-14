@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import graphs.Vertex;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -18,6 +19,7 @@ import javafx.stage.Stage;
 import model.Character;
 
 public class GameController {
+	
 	@FXML
 	private ImageView card1;
 
@@ -56,6 +58,9 @@ public class GameController {
 
 	@FXML
 	private Button fight;
+	
+	@FXML
+	private Button newGame;
 
 	@FXML
 	private Label totalEnergy;
@@ -65,11 +70,11 @@ public class GameController {
 	private Image image1, image2, image3, image4, image5, image6, image7, image8, image9, image10;
 	private Vertex<Character> currentCharacter, currentEnermy;
 
-	private List<Vertex<Character>> enemies;
+	private List<Vertex<Character>> characters, enemies;
 
-	private List<ImageView> playerCharacters, enemyCharacters;
+	private List<ImageView> playerCharacters, enemyCharacters;	
 
-	private int counter, victories, defeats;
+	private int counter;
 
 	@FXML
 	public void initialize() {
@@ -96,7 +101,7 @@ public class GameController {
 	}
 
 	public void displayCharacterImage() {
-		List<Vertex<Character>> characters = principal.getGame()
+		characters = principal.getGame()
 				.getPlayerCharactersVertex(principal.getGame().getPlayers().get("DavidFiat24"));
 		image1 = new Image(getClass().getResource(characters.get(0).getValue().getUrl()).toExternalForm());
 		image2 = new Image(getClass().getResource(characters.get(1).getValue().getUrl()).toExternalForm());
@@ -168,50 +173,93 @@ public class GameController {
 
 	@FXML
 	void fight(ActionEvent event) {
-		if (victories >=4 && Integer.parseInt(totalEnergy.getText()) > 0) {
-			System.out.println(victories);
-			winAlert();
-		}else if (Integer.parseInt(totalEnergy.getText()) <= 0 || defeats >= 5) {
-			lostAlert();
-		}
 		principal.getGame().setTotalEnergy(Integer.parseInt(totalEnergy.getText()));
 		if (principal.getGame().battleTime(currentCharacter, currentEnermy)) {
-			if (principal.getGame().fight(currentCharacter, currentEnermy)) {
-				if (counter < 5)
-					enemyCharacters.get(counter).setOpacity(0.56);
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setHeaderText("Victory!");
-				alert.setContentText(currentCharacter.getValue().getName() + " wins this fight!");
-				alert.show();
+			boolean wins = principal.getGame().fight(currentCharacter, currentEnermy);
+			if(principal.getGame().getTotalEnergy()<=0) {
+				lostAlert();
+				newGame();
+				totalEnergy.setText(principal.getGame().getTotalEnergy() + "");
+			}else if (wins && counter<4) {
+				enemyCharacters.get(counter).setOpacity(0.56);
+				winFightAlert();
 				counter++;
-				if (counter < 5) {
-					currentEnermy = enemies.get(counter);
-					enemy.setImage(enemyCharacters.get(counter).getImage());
+				currentEnermy = enemies.get(counter);
+				enemy.setImage(enemyCharacters.get(counter).getImage());
+			}else if(wins && counter>=4) {
+				winAlert();
+				newGame();
+			}else {
+				if(playerCharacters.size()==1) {
+					lostAlert();
+					newGame();
+				}else {
+					lostFightAlert();
+					fight.setDisable(true);
 				}
-			} else {
 				for (ImageView imageView : playerCharacters) {
 					if (getClass().getResource(currentCharacter.getValue().getUrl()).toExternalForm()
 							.equals(imageView.getImage().getUrl())) {
 						imageView.setOnMouseClicked(null);
 						imageView.setOpacity(0.56);
+						playerCharacters.remove(imageView);
 						break;
 					}
 				}
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setHeaderText("Defeat!");
-				alert.setContentText(currentCharacter.getValue().getName() + " lost this fight...");
-				alert.show();
 				character.setImage(null);
 			}
-		} else {
+		}else {
 			String story = principal.getGame().tellStory(currentCharacter, currentEnermy);
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setHeaderText("Story");
-			alert.setContentText(story);
-			alert.show();
+			storyAlert(story);
 			principal.getGame().createBattle(currentCharacter, currentEnermy);
 		}
 		totalEnergy.setText(principal.getGame().getTotalEnergy() + "");
+	}
+	
+	@FXML
+	public void newGame() {
+		counter = 0;
+		fight.setDisable(false);
+		fight.setText("AGAIN");
+		fight.setOnAction(e -> {
+			totalEnergy.setText("80");
+			principal.getGame().setTotalEnergy(80);
+			fight.setDisable(true);
+			character.setImage(null);
+			playerCharacters.clear();
+			enemyCharacters.clear();
+			displayCharacterImage();
+			displayEnemyImage();
+			for (ImageView imageView : playerCharacters) {
+				imageView.setOpacity(1);
+			}
+			for (ImageView imageView : enemyCharacters) {
+				imageView.setOpacity(1);
+			}
+			fight.setText("FIGHT");
+			fight.setOnAction(new EventHandler<ActionEvent>() {
+				
+				@Override
+				public void handle(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					fight(arg0);
+				}
+			});
+		});
+	}
+	
+	private void lostFightAlert() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText("Defeat!");
+		alert.setContentText(currentCharacter.getValue().getName() + " lost this fight...");
+		alert.show();
+	}
+	
+	private void winFightAlert() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText("Victory!");
+		alert.setContentText(currentCharacter.getValue().getName() + " wins this fight!");
+		alert.show();
 	}
 	
 	private void lostAlert() {
@@ -227,14 +275,23 @@ public class GameController {
 		alert.setContentText("You win");
 		alert.show();
 	}
+	
+	private void storyAlert(String story) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText("Story");
+		alert.setContentText(story);
+		alert.show();
+	}
 
 	@FXML
 	public void getBestPossibleScore() {
 		double mstWeight = principal.getGame().getBestPossibleScore(currentCharacter);
 		String text = "";
-		if(mstWeight<=50) {
+		System.out.println(mstWeight);
+		if(mstWeight<=80) {
 			text = "Your current character cannot win on his own. Switch your character!";
 		}else {
+			mstWeight += 80;
 			text = "The best possible score for your current Character is "+mstWeight+".";
 		}
 		Alert alert = new Alert(AlertType.INFORMATION);

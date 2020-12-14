@@ -18,67 +18,7 @@ public class Game implements Serializable {
 	public Game() throws AlreadyHaveCharacter {
 		players = new HashMap<>();
 		characters = new AdjMatrixGraph<Character>(true, true);
-		Character one = new Character("/resources/cards/flash2.jpg", "Flash", 80);
-		Character two = new Character("/resources/cards/captainAmerica.jpg", "Captain America", 35);
-		Character three = new Character("/resources/cards/doctorStrange.jpg", "Doctor Strange", 83);
-		Character four = new Character("/resources/cards/ironman2.jpg", "Ironman", 58);
-		Character five = new Character("/resources/cards/THOR-6.jpg", "Thor", 70);
-		Character six = new Character("/resources/cards/spidermanS.jpg", "Spiderman", 45);
-		Character seven = new Character("/resources/cards/blackwidow.jpg", "Black Widow", 13);
-		Character eight = new Character("/resources/cards/thanos2.jpg", "Thanos", 90);
-		Character nine = new Character("/resources/cards/scarlet.jpg", "Scarlet", 85);
-		Character ten = new Character("/resources/cards/hulk2.jpg", "Hulk", 79);
-		Player p = new Player("DavidFiat24");
-		players.put(p.getNickname(), p);
-		p.assignCharacter(one);
-		p.assignCharacter(two);
-		p.assignCharacter(three);
-		p.assignCharacter(four);
-		p.assignCharacter(five);
-		p.assignCharacter(six);
-		p.assignCharacter(seven);
-		p.assignCharacter(eight);
-		p.assignCharacter(nine);
-		p.assignCharacter(ten);
-		characters.addVertex(one);
-		characters.addVertex(two);
-		characters.addVertex(three);
-		characters.addVertex(four);
-		characters.addVertex(five);
-		characters.addVertex(six);
-		characters.addVertex(seven);
-		characters.addVertex(eight);
-		characters.addVertex(nine);
-		characters.addVertex(ten);
-		characters.addEdge(one, two, one.getPower() - two.getPower());
-		characters.addEdge(two, one, two.getPower() - one.getPower());
-
-		characters.addEdge(two, three, two.getPower() - three.getPower());
-		characters.addEdge(three, two, three.getPower() - two.getPower());
-
-		characters.addEdge(four, three, four.getPower() - three.getPower());
-		characters.addEdge(three, four, three.getPower() - four.getPower());
-
-		characters.addEdge(four, five, four.getPower() - five.getPower());
-		characters.addEdge(five, four, five.getPower() - four.getPower());
-
-		characters.addEdge(five, six, five.getPower() - six.getPower());
-		characters.addEdge(six, five, six.getPower() - five.getPower());
-
-		characters.addEdge(six, seven, six.getPower() - seven.getPower());
-		characters.addEdge(seven, six, seven.getPower() - six.getPower());
-
-		characters.addEdge(seven, eight, seven.getPower() - eight.getPower());
-		characters.addEdge(eight, seven, eight.getPower() - seven.getPower());
-
-		characters.addEdge(eight, nine, eight.getPower() - nine.getPower());
-		characters.addEdge(nine, eight, nine.getPower() - eight.getPower());
-
-		characters.addEdge(nine, ten, nine.getPower() - ten.getPower());
-		characters.addEdge(ten, nine, ten.getPower() - nine.getPower());
-
-		characters.addEdge(ten, one, ten.getPower() - one.getPower());
-		characters.addEdge(one, ten, one.getPower() - ten.getPower());
+		setUpGame();
 	}
 
 	public void addPlayer(String nickname) {
@@ -190,5 +130,73 @@ public class Game implements Serializable {
 	
 	public void setTotalEnergy(int totalEnergy) {
 		this.totalEnergy = totalEnergy;
+	}
+
+	public IGraph<Character> getCharacters() {
+		return characters;
+	}
+	
+	public void setUpGame() throws AlreadyHaveCharacter {
+		Character one = new Character("/resources/cards/flash2.jpg", "Flash", 80);
+		Character two = new Character("/resources/cards/captainAmerica.jpg", "Captain America", 35);
+		Character three = new Character("/resources/cards/doctorStrange.jpg", "Doctor Strange", 83);
+		Character four = new Character("/resources/cards/ironman2.jpg", "Ironman", 58);
+		Character five = new Character("/resources/cards/THOR-6.jpg", "Thor", 70);
+		Character six = new Character("/resources/cards/spidermanS.jpg", "Spiderman", 45);
+		Character seven = new Character("/resources/cards/blackwidow.jpg", "Black Widow", 13);
+		Character eight = new Character("/resources/cards/thanos2.jpg", "Thanos", 90);
+		Character nine = new Character("/resources/cards/scarlet.jpg", "Scarlet", 85);
+		Character ten = new Character("/resources/cards/hulk2.jpg", "Hulk", 79);
+		Player p = new Player("DavidFiat24");
+		players.put(p.getNickname(), p);
+		p.assignCharacter(one);
+		p.assignCharacter(two);
+		p.assignCharacter(three);
+		p.assignCharacter(four);
+		p.assignCharacter(five);
+		p.assignCharacter(six);
+		p.assignCharacter(seven);
+		p.assignCharacter(eight);
+		p.assignCharacter(nine);
+		p.assignCharacter(ten);
+		characters.addVertex(one);
+		characters.addVertex(two);
+		characters.addVertex(three);
+		characters.addVertex(four);
+		characters.addVertex(five);
+		characters.addVertex(six);
+		characters.addVertex(seven);
+		characters.addVertex(eight);
+		characters.addVertex(nine);
+		characters.addVertex(ten);
+		characters.addEdge(one, two, one.getPower() - two.getPower());
+		characters.addEdge(two, one, two.getPower() - one.getPower());
+
+		characters.addEdge(two, three, two.getPower() - three.getPower());
+		characters.addEdge(three, two, three.getPower() - two.getPower());
+
+		characters.addEdge(four, three, four.getPower() - three.getPower());
+		characters.addEdge(three, four, three.getPower() - four.getPower());
+
+		characters.addEdge(four, five, four.getPower() - five.getPower());
+		characters.addEdge(five, four, five.getPower() - four.getPower());
+
+		characters.addEdge(five, six, five.getPower() - six.getPower());
+		characters.addEdge(six, five, six.getPower() - five.getPower());
+
+		characters.addEdge(six, seven, six.getPower() - seven.getPower());
+		characters.addEdge(seven, six, seven.getPower() - six.getPower());
+
+		characters.addEdge(seven, eight, seven.getPower() - eight.getPower());
+		characters.addEdge(eight, seven, eight.getPower() - seven.getPower());
+
+		characters.addEdge(eight, nine, eight.getPower() - nine.getPower());
+		characters.addEdge(nine, eight, nine.getPower() - eight.getPower());
+
+		characters.addEdge(nine, ten, nine.getPower() - ten.getPower());
+		characters.addEdge(ten, nine, ten.getPower() - nine.getPower());
+
+		characters.addEdge(ten, one, ten.getPower() - one.getPower());
+		characters.addEdge(one, ten, one.getPower() - ten.getPower());
 	}
 }
