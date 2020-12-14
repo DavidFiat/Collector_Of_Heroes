@@ -24,7 +24,11 @@ You can find a preview here: https://youtu.be/gOFpP9dajjM
 ## How the game looks like
 Here you can see a preview for the game, its style and design! We used as inspiration indie game designs.
 
-![Captura de pantalla 2020-11-26 164421](https://user-images.githubusercontent.com/45322807/100393348-54c47e80-3007-11eb-8e56-3fadbdedb305.png)
+![Captura de pantalla 2020-11-26 164421](https://user-images.githubusercontent.com/45322807/100393348-54c47e80-3007-11eb-8e56-3fadbdedb305.png) <br> <br>
+![Captura de pantalla 2020-12-14 171634](https://user-images.githubusercontent.com/45322807/102142288-22e94f80-3e30-11eb-8ed8-4d6974fef431.png) <br> <br>
+![Captura de pantalla 2020-12-14 170904](https://user-images.githubusercontent.com/45322807/102141807-714a1e80-3e2f-11eb-9a44-37f0e8438d70.png) <br> <br>
+![Captura de pantalla 2020-12-14 171409](https://user-images.githubusercontent.com/45322807/102142121-e289d180-3e2f-11eb-98ec-eb59bebcb84a.png)
+
 
 ## Developers
 - Luisa Fernanda Quintero Fernandez: [FernandaRojas152](https://github.com/FernandaRojas152) <br> 
